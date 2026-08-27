@@ -20,25 +20,25 @@ configuration:
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#eee7f4"
+        lightgray: "#e3dcec"
+        gray: "#c9bfd8"
+        darkgray: "#454257"
+        dark: "#17161d"
+        secondary: "#872de6"
+        tertiary: "#ff7e33"
+        highlight: rgba(135, 45, 230, 0.15)
+        textHighlight: "rgba(255, 126, 51, 0.30)"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#211b2d"
+        lightgray: "#2b2438"
+        gray: "#554b6c"
+        darkgray: "#c2bfcf"
+        dark: "#f1f0f4"
+        secondary: "#9648ea"
+        tertiary: "#ff9e66"
+        highlight: rgba(150, 72, 234, 0.25)
+        textHighlight: "rgba(255, 158, 102, 0.35)"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -100,7 +100,7 @@ plugins:
   - source: "@quartz-community/quartz-fonts"
     enabled: true
   - source: "@quartz-themes/core"
-    enabled: true
+    enabled: false
     options:
       theme: minimal
       mode: both
