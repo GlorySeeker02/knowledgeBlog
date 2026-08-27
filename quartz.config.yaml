@@ -23,7 +23,7 @@ configuration:
         light: "#f5f5f5"
         lightgray: "#e3e3e3"
         gray: "#cccccc"
-        darkgray: "#555555"
+        darkgray: "#222222"
         dark: "#222222"
         secondary: "#fc6423"
         tertiary: "#e0571b"
@@ -70,7 +70,7 @@ plugins:
     enabled: true
     order: 50
     layout:
-      position: left
+      position: right
       priority: 30
   - source: "@quartz-community/crawl-links"
     enabled: true
@@ -207,7 +207,7 @@ plugins:
       position: footer
       priority: 50
   - source: "@quartz-community/recent-notes"
-    enabled: true
+    enabled: false
     options:
       title: "最近更新"
       limit: 8
