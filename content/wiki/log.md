@@ -163,3 +163,8 @@
 - Updated: [[wiki/数字信号处理/信号与系统基础]] — 新增采样与混叠定量（折叠公式、双折叠例、噪声折叠 B/(fs/2)、抗混叠必须在采样前）
 - Updated: wiki/index.md — 刷新两条目描述与 Updated 日期
 - Fixed: wiki/log.md 编码统一为 UTF-8（此前 UTF-8/GBK 混合，现全文件可正常显示）
+
+## [2026-08-22] setup | 新增论文文献管理模块
+- Created: [[wiki/论文/论文库说明与模板]]（目录规范 + frontmatter 模板 + 完整示例）
+- CLAUDE.md 新增「触发 4：Paper（文献入库）」：PDF 进 `raw/论文/<主题>/`，笔记进 `wiki/论文/<主题>/`，自动更新 index/log
+- blog: quartz.config.yaml 增加论文属性展示（authors/year/venue/keywords/doi），首页加论文库入口

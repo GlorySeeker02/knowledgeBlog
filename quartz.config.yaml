@@ -229,6 +229,11 @@ plugins:
         - description
         - tags
         - aliases
+        - authors
+        - year
+        - venue
+        - keywords
+        - doi
       excludedProperties: []
       hidePropertiesView: false
       delimiters: ---
