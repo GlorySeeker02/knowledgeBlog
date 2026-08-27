@@ -168,3 +168,9 @@
 - Created: [[wiki/论文/论文库说明与模板]]（目录规范 + frontmatter 模板 + 完整示例）
 - CLAUDE.md 新增「触发 4：Paper（文献入库）」：PDF 进 `raw/论文/<主题>/`，笔记进 `wiki/论文/<主题>/`，自动更新 index/log
 - blog: quartz.config.yaml 增加论文属性展示（authors/year/venue/keywords/doi），首页加论文库入口
+
+## [2026-08-22] paper | ISSCC 2026 Session 8: Die-to-Die and High-Speed Electrical Transceivers
+- Source: `D:\user\liuliu\file_convert\output\ISSCC\2026\8 Die-to-Die and High-Speed Electrical Transceivers\`（转换 md + 全部插图）
+- Raw: [[raw/论文/高速接口/8 Die-to-Die and High-Speed Electrical Transceivers/]]（109 文件，97.6 MB）
+- Created: [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]]（11 篇论文清单表 + 四方向总结 + 趋势观察）
+- Updated: wiki/index.md — 论文分组新增条目
