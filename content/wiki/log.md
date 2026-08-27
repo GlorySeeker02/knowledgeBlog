@@ -206,3 +206,10 @@
 ## [2026-08-22] setup | 博客改 Hexo 风格简洁布局
 - blog: 关闭 graph（关系图谱）、backlinks（反向链接）、explorer（左侧目录树）；recent-notes 移至左侧栏（8 条）；保留 TOC/搜索/深色模式/阅读模式/面包屑
 - 主题维持 minimal（极简浅色），构建验证通过
+
+## [2026-08-22] setup | 左侧栏改 Pkmer 式目录树导航
+- blog: 恢复 explorer 目录树作为左侧主导航（Pkmer Docs 式分组导航，含嵌套文件夹）；最近更新移至左侧底部；TOC 保留右侧；graph/backlinks 维持关闭
+
+## [2026-08-22] setup | 主题配色改为 Pkmer 风
+- blog: 提取 pkmer.cn/theme.css 色板（主色紫 hsl(269,79%,54%)、点缀橙 hsl(22,100%,60%)、浅紫灰底 #eee7f4、深色靛紫底 #211b2d），写入 quartz.config.yaml theme.colors（明暗双模式）
+- 停用 @quartz-themes/minimal 插件，改用自定义配色（构建验证：--secondary:#872de6、--tertiary:#ff7e33 等已生效）
