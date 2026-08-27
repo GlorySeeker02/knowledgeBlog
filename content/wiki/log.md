@@ -190,3 +190,8 @@
 - Updated: [[wiki/论文/论文数据库]] — 新增「架构（Tx+Rx/Tx only/Rx only）」「功耗 pJ/b」「面积」三栏，11 篇全部补全（8.1/8.6/8.8 有面积数据，其余标「—」）
 - Updated: CLAUDE.md 触发 4 — 数据库行字段规范同步
 - Updated: [[wiki/论文/论文库说明与模板]]、wiki/index.md — 字段说明同步
+
+## [2026-08-22] setup | 论文数据库增加工作速率/Tx架构/Rx架构三栏
+- Updated: [[wiki/论文/论文数据库]] — 新增「工作速率 Gbps」「Tx 架构（SST/CML 等按原文）」「Rx 架构」三栏，11 篇全部补全（未详述项标「—（未详述）」）
+- Updated: CLAUDE.md 触发 4 — 数据库行字段规范同步（共 16 字段）
+- Updated: [[wiki/论文/论文库说明与模板]]、wiki/index.md — 字段说明同步
