@@ -21,7 +21,7 @@ tags: ["论文", "高速接口"]
 | 8.3 | 零唤醒惩罚时钟门控模块化 D2D | Ravi Shivnaraine (Microsoft) | 24Gb/s，0.23pJ/b，4.2ns 端到端延迟，3nm |
 | 8.4 | 112Gb/s/wire 单端双向收发机 + 动态均衡器 | Zhiwen Huang (北京大学) | 112Gb/s/wire NRZ SBD，BER<1E-14，1.01pJ/b，28nm |
 | 8.5 | 112Gb/s 无参考混合信号 PAM-4 CDR | Yiqing Xu (中科院半导体所) | 112Gb/s，0.76pJ/b，恢复时钟抖动 343fsrms，0.11UIPP@1E-12 |
-| 8.6 | 280mW 112Gb/s PAM-4/NRZ 低功耗收发机 | Ullas Singh (Broadcom) | 280mW，补偿 35dB 信道损耗，BER<1E-6，最佳 pJ/b/dB FOM，5nm |
+| 8.6 | 280mW 112Gb/s PAM-4/NRZ 低功耗收发机 | Ullas Singh (Broadcom) | 280mW，补偿 35dB 信道损耗，BER<1E-6，最佳 pJ/b/dB FOM，5nm（[深度分析](Broadcom2026-280mW-112G-Transceiver-Analysis.md)） |
 | 8.7 | 112Gb/s PAM-4 SBD + 失配补偿 2×VDD 混合 | Huanfa Sun (西安交通大学) | TX swing 1.27V，1.73pJ/b，FoM 0.14pJ/b/dB，28nm |
 | 8.8 | 56Gb/s/wire 电容驱动 SBD，PVT/失配跟踪 | Kahyun Kim (首尔大学) | 0.292pJ/b，20.7Tb/s/mm，56Gb/s/wire，28nm，XSR/D2D |
 | 8.9 | 72Gb/s/pin 单端 SBD + C-Peaking 泄漏消除 | Xuxu Cheng (南方科技大学) | 72Gb/s/pin，CPLC 抑制泄漏 63%，1.5pJ/b，28nm |
@@ -54,3 +54,7 @@ tags: ["论文", "高速接口"]
 - 亮点：数据密度与能效指标全面刷新（UCIe 3× 速率、0.23pJ/b、240Gb/s TX）；Session 综述形式适合快速建立领域地图
 - 局限：这是会议 digest（每篇 2 页摘要），电路细节有限；需要单篇全文时再从 raw 源文件按需展开
 - Source: `raw/论文/高速接口/8 Die-to-Die and High-Speed Electrical Transceivers/`（原文 md + 全部插图）
+
+## See Also
+
+- [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]] — 8.6（Broadcom 低功耗收发机）深度分析

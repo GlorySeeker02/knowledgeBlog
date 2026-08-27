@@ -174,3 +174,8 @@
 - Raw: [[raw/论文/高速接口/8 Die-to-Die and High-Speed Electrical Transceivers/]]（109 文件，97.6 MB）
 - Created: [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]]（11 篇论文清单表 + 四方向总结 + 趋势观察）
 - Updated: wiki/index.md — 论文分组新增条目
+
+## [2026-08-22] query | Archived: Broadcom 280mW 112Gb/s 收发机深度分析（8.6）
+- Created: [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]]（8.6 深度分析归档，含关键框图）
+- Updated: [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]] — 8.6 表格行链接到分析笔记 + See Also
+- Updated: wiki/index.md — 论文分组新增条目
