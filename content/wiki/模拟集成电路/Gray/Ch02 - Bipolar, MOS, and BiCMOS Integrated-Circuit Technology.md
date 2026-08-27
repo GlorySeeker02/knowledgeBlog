@@ -175,7 +175,9 @@ p 型衬底 -> n 阱注入 (P) 和推进扩散
 
 #### 阈值电压构成
 
-$$V_t = \phi_{ms} + 2\phi_f + \frac{Q_b}{C_{ox}} + \frac{Q_{ss}}{C_{ox}}$$
+$$
+V_t = \phi_{ms} + 2\phi_f + \frac{Q_b}{C_{ox}} + \frac{Q_{ss}}{C_{ox}}
+$$
 
 - $\phi_{ms}$：金属-硅功函数差（n 沟约 -0.6 V）
 - $2\phi_f$：表面强反型所需能带弯曲（~0.54 V）
@@ -185,7 +187,9 @@ $$V_t = \phi_{ms} + 2\phi_f + \frac{Q_b}{C_{ox}} + \frac{Q_{ss}}{C_{ox}}$$
 
 #### 有效沟道长度
 
-$$L_{\text{eff}} = L_{\text{drwn}} - 2L_d - X_d$$
+$$
+L_{\text{eff}} = L_{\text{drwn}} - 2L_d - X_d
+$$
 
 其中 $L_d$ 为源漏侧向扩散，$X_d$ 为漏端耗尽区宽度。未注入器件的 $X_d$ 远大于注入器件（衬底掺杂低 -> 耗尽区宽），因此未注入器件需要更长的版图沟道长度来维持相同的 $r_o$。
 
@@ -225,11 +229,13 @@ n+ 埋层 (Sb, 双极 + PMOS 区域) + p 阱 (B, NMOS 区域)
 
 **收益三角**：
 
-$$\text{高基区掺杂 } N_A \uparrow \rightarrow \begin{cases}
+$$
+\text{高基区掺杂 } N_A \uparrow \rightarrow \begin{cases}
 r_b \downarrow &\text{(可减薄基区宽度)} \\
 V_A \uparrow &\text{(基区宽度调制减弱)} \\
 C_{je} \downarrow &\text{(发射极掺杂可降低)}
-\end{cases}$$
+\end{cases}
+$$
 
 - Ge 浓度通常约 15%（应变 SiGe 稳定上限，由晶格失配决定）
 - 渐变 Ge 成分可产生加速载流子的内建电场 -> 进一步提高 $f_T$

@@ -140,10 +140,14 @@ $$
 **不对称电路 → 共模-差模转换**：
 
 - 负载电阻失配 $\Delta R_D$：
-  $$A_{CM-DM} = \frac{\Delta R_D}{R_D}\cdot\frac{g_m R_D}{1+2g_m R_{SS}}$$
+$$
+A_{CM-DM} = \frac{\Delta R_D}{R_D}\cdot\frac{g_m R_D}{1+2g_m R_{SS}}
+$$
 
 - 跨导失配 $\Delta g_m$：
-  $$A_{CM-DM} = -\frac{\Delta g_m \cdot R_D}{1+2g_m R_{SS}}$$
+$$
+A_{CM-DM} = -\frac{\Delta g_m \cdot R_D}{1+2g_m R_{SS}}
+$$
 
 **共模抑制比**：
 
@@ -159,7 +163,9 @@ $$
 
 > [!warning] 高频退化
 > 即使 $R_{SS}$ 很大，尾节点寄生电容 $C_P$ 会在高频提供低阻抗通路，恶化 CMRR：
-> $$A_{CM-DM} \propto \frac{\Delta g_m \cdot R_D}{\sqrt{1+(2g_m/\omega C_P)^2}}$$
+> $$
+> A_{CM-DM} \propto \frac{\Delta g_m \cdot R_D}{\sqrt{1+(2g_m/\omega C_P)^2}}
+> $$
 > **频率越高，CMRR 越差。**
 >
 > 体效应失配（$g_{mb1}\neq g_{mb2}$）即使理想 $I_{SS}$ 也会导致 CM-DM 转换——因为 $V_P$ 随 $V_{in,CM}$ 变化，$V_{BS}$ 变化不等量地调制两管电流。

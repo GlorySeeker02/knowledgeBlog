@@ -57,7 +57,9 @@ Ch06 的无缓冲运放输出阻抗高、只能驱动中等容性负载。Ch07 �
 
 核心公式（适用于两极点系统）：
 
-$$GB = \frac{g_{mI}}{C_A}$$
+$$
+GB = \frac{g_{mI}}{C_A}
+$$
 
 - 两极点运放：$C_A = C_c$（Miller 补偿电容）
 - 折叠共源共栅：$C_A$ = 输出节点到地电容
@@ -70,7 +72,9 @@ $$GB = \frac{g_{mI}}{C_A}$$
 2. **开关运放 (Switched Op Amps)**：用动态偏置开关电容简化偏置电路，减少寄生极点数。推挽共源共栅结构 (Fig. 7.2-5)，双多晶工艺可消除级联器件间的漏-源扩散面积 (Fig. 7.2-8)。实测 $GB=127\text{ MHz}$，$A_v=51\text{ dB}$，$P=1.6\text{ mW}$。仅适用于采样数据系统。
 
 3. **电流反馈运放 (Current Feedback Op Amps)**：关键特性——闭环 -3dB 频率**与电压增益无关**。
-   $$GB = \frac{1}{R_1 C_o} \cdot \left(1+\frac{R_2}{R_1}\right) \;(\text{忽略电流放大器增益有限时})$$
+$$
+GB = \frac{1}{R_1 C_o} \cdot \left(1+\frac{R_2}{R_1}\right) \;(\text{忽略电流放大器增益有限时})
+$$
    电压增益 $(-R_2/R_1)$ 越大，_GB_ 越高，直到被高阶极点限制。$R_1$ 必须小（~3.2k\Omega），$C_o$ 必须极小（~100fF）。Example 7.2-3 实现约 300 MHz _GB_；$R_1$ 从 3.2k\Omega 降至 1k\Omega 时 _GB_ 升至 630 MHz。
 
 4. **多路径运放 (Parallel Path / Multipath Nested Miller)**：低频高增益路径 + 高频低增益路径并联 (Fig. 7.2-14/7.2-15)。低频路径提供高 dc 增益；高频路径将 -20dB/dec 斜率延伸至更高频率，使条件稳定的运放满足稳定裕度。LHP 零点可抵消第二极点。
@@ -114,11 +118,17 @@ $$GB = \frac{g_{mI}}{C_A}$$
 
 #### 弱反型区关键方程
 
-$$i_D \approx I_{D0}\frac{W}{L}\exp\left(\frac{v_{GS}}{nV_t}\right)$$
+$$
+i_D \approx I_{D0}\frac{W}{L}\exp\left(\frac{v_{GS}}{nV_t}\right)
+$$
 
-$$g_m = \frac{I_D}{nV_t}$$
+$$
+g_m = \frac{I_D}{nV_t}
+$$
 
-$$r_{ds} \approx \frac{1}{\lambda I_D}$$
+$$
+r_{ds} \approx \frac{1}{\lambda I_D}
+$$
 
 - $g_m$ 与电流呈线性关系（类似 BJT），**与器件尺寸无关**。
 - 增益 $g_m r_{ds}$ 只由沟道长度（通过 $\lambda$）决定，与偏置电流无关。
@@ -137,7 +147,9 @@ $$r_{ds} \approx \frac{1}{\lambda I_D}$$
 微功耗运放的瓶颈在于大输出电流能力。
 
 1. **动态偏置电流提升 (Fig. 7.4-4)**：利用正反馈（环路增益<1 保证大信号稳定）在差模输入出现时倍增尾电流。输出电流：
-   $$i_{OUT} = b \cdot I_5 \cdot \left[\exp\left(\frac{v_{IN}}{nV_t}\right)-1\right] \quad (\text{仅正反馈})$$
+$$
+i_{OUT} = b \cdot I_5 \cdot \left[\exp\left(\frac{v_{IN}}{nV_t}\right)-1\right] \quad (\text{仅正反馈})
+$$
    参数 _A_ 控制倍增因子 (Fig. 7.4-5)。
 
 2. **电流镜有源区升压 (Fig. 7.4-6/7.4-7)**：使输出管工作在线性区，当信号将其拉入饱和区时，输出电流放大 _k_ 倍。Example 7.4-2 中 _k_ = 5.31。
@@ -152,10 +164,14 @@ $$r_{ds} \approx \frac{1}{\lambda I_D}$$
 
 #### MOSFET 噪声模型
 
-$$\overline{i_{th}^2} = 4kT \left(\frac{2}{3}\right)g_m \quad\quad \overline{i_{1/f}^2} = \frac{KF \cdot I_D}{C_{ox}L^2} \cdot \frac{1}{f}$$
+$$
+\overline{i_{th}^2} = 4kT \left(\frac{2}{3}\right)g_m \quad\quad \overline{i_{1/f}^2} = \frac{KF \cdot I_D}{C_{ox}L^2} \cdot \frac{1}{f}
+$$
 
 反射到栅极：
-$$\overline{e_{eq}^2} = \frac{8kT}{3g_m} + \frac{KF}{2C_{ox}WL} \cdot \frac{1}{f}$$
+$$
+\overline{e_{eq}^2} = \frac{8kT}{3g_m} + \frac{KF}{2C_{ox}WL} \cdot \frac{1}{f}
+$$
 
 #### 降噪策略
 
@@ -165,7 +181,9 @@ $$\overline{e_{eq}^2} = \frac{8kT}{3g_m} + \frac{KF}{2C_{ox}WL} \cdot \frac{1}{f
 4. **增大 $g_m$**：降低热噪声（大偏置电流或大 $W/L$）。
 
 对两级运放 (Fig. 7.5-1)，等效输入 1/_f_ 噪声：
-$$\overline{e_{eq}^2} \approx 2\overline{e_{n1}^2}\left[1 + \left(\frac{K'_N B_N}{K'_P B_P}\right)\left(\frac{L_1}{L_3}\right)^2\right]$$
+$$
+\overline{e_{eq}^2} \approx 2\overline{e_{n1}^2}\left[1 + \left(\frac{K'_N B_N}{K'_P B_P}\right)\left(\frac{L_1}{L_3}\right)^2\right]
+$$
 
 取 $L_1 < L_3$ 可使括号项趋近 1，总噪声趋近 $2\overline{e_{n1}^2}$。
 

@@ -46,7 +46,9 @@ ROC 是 $z$ 平面上的环形区域 $R_1 < |z| < R_2$：
 
 ## 系统函数
 
-$$H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{k=0}^{M} b_k z^{-k}}{\sum_{k=0}^{N} a_k z^{-k}} = \frac{b_0}{a_0} \frac{\prod (1 - c_k z^{-1})}{\prod (1 - d_k z^{-1})}$$
+$$
+H(z) = \frac{Y(z)}{X(z)} = \frac{\sum_{k=0}^{M} b_k z^{-k}}{\sum_{k=0}^{N} a_k z^{-k}} = \frac{b_0}{a_0} \frac{\prod (1 - c_k z^{-1})}{\prod (1 - d_k z^{-1})}
+$$
 
 - 分子根 → **零点**，分母根 → **极点**
 - **因果 LTI 系统稳定 $\Leftrightarrow$ 所有极点位于单位圆内**

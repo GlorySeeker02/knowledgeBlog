@@ -25,7 +25,9 @@ tags:
 
 在半导体工艺中经常使用"薄层电阻"概念来估算导体电阻。一块矩形导体的总电阻为：
 
-$$R = \rho \cdot \frac{L}{W \cdot t}$$
+$$
+R = \rho \cdot \frac{L}{W \cdot t}
+$$
 
 其中 $\rho$ 为材料电阻率，$L, W, t$ 分别为长、宽、厚。在集成电路中，$\rho$ 和 $t$ 由工艺决定，版图不能改变——因此将 $R_{\square} = \rho/t$ 定义为**薄层电阻**，单位为"欧姆/方块" ($\Omega/\square$)。
 
@@ -243,7 +245,9 @@ CMOS 工艺的起点是高纯度的单晶硅晶圆：
 
 经验公式（单位长度总电容）：
 
-$$C_{total} = W \cdot \varepsilon_{ox} \left[\frac{W}{h} + 0.77 + 1.06\left(\frac{W}{h}\right)^{0.25} + 1.06\left(\frac{t}{h}\right)^{0.5}\right]$$
+$$
+C_{total} = W \cdot \varepsilon_{ox} \left[\frac{W}{h} + 0.77 + 1.06\left(\frac{W}{h}\right)^{0.25} + 1.06\left(\frac{t}{h}\right)^{0.5}\right]
+$$
 
 其中 $W, h, t$ 分别为导线宽度、到衬底的高度、导线厚度。对典型尺寸误差在百分之几以内。
 

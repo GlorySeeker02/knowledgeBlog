@@ -19,7 +19,9 @@ tags: [jitter, phase-noise, 学习笔记, 仿真]
 
 目标：生成数列 $t_k$，表示标称频率 $f_0$、相位噪声轮廓为 $\mathcal{L}(f)$ 的时钟边沿时刻。把 $t_k$ 分解为理想时钟加抖动过程：
 
-$$t_k = t_{id,k} + a_k = \frac{k}{f_0} + a_k,\qquad k \geq 0$$
+$$
+t_k = t_{id,k} + a_k = \frac{k}{f_0} + a_k,\qquad k \geq 0
+$$
 
 其中 $a_k$ 就是第 2 章定义的**绝对抖动**（absolute jitter）。问题归结为：生成具有指定 $\mathcal{L}(f)$ 的随机序列 $a_k$。
 
@@ -28,7 +30,9 @@ $$t_k = t_{id,k} + a_k = \frac{k}{f_0} + a_k,\qquad k \geq 0$$
 
 全书第 3 章已建立抖动 PSD 与相位噪声的桥梁公式，此处重复使用：
 
-$$S_a(f) = \frac{\mathcal{L}(f)}{\omega_0^2}, \qquad \omega_0 = 2\pi f_0 \tag{10.1}$$
+$$
+S_a(f) = \frac{\mathcal{L}(f)}{\omega_0^2}, \qquad \omega_0 = 2\pi f_0 \tag{10.1}
+$$
 
 > [!note] 算法总路线
 > 除 1/f 类轮廓外，所有算法的骨架都是：**先生成平坦谱高斯序列，再用"数字滤波器或累加器"把它整形成目标谱形**；各分量方差由目标 $\mathcal{L}(f)$ 反解得到。
@@ -37,11 +41,15 @@ $$S_a(f) = \frac{\mathcal{L}(f)}{\omega_0^2}, \qquad \omega_0 = 2\pi f_0 \tag{10
 
 目标 $\mathcal{L}(f) = \mathcal{L}_0$（常数），由式 (10.1) 知 $a_k$ 必须有平坦 PSD，即白噪声序列。离散时间白噪声定义在 $1/f_0$ 整数倍的时间栅格上，方差与 PSD 的关系为：
 
-$$S_a(f) = \frac{\sigma_a^2}{f_0} \tag{10.2}$$
+$$
+S_a(f) = \frac{\sigma_a^2}{f_0} \tag{10.2}
+$$
 
 与式 (10.1) 联立（注意 $\omega_0 = 2\pi f_0$），解出所需标准差：
 
-$$\sigma_a = \frac{1}{2\pi}\sqrt{\frac{\mathcal{L}_0}{f_0}} \tag{10.3}$$
+$$
+\sigma_a = \frac{1}{2\pi}\sqrt{\frac{\mathcal{L}_0}{f_0}} \tag{10.3}
+$$
 
 **算法步骤**：
 1. 把目标本底 $\mathcal{L}_0$ 从 dBc/Hz 换成线性值（$10^{\mathcal{L}_0|_{\mathrm{dB}}/10}$），按式 (10.3) 算 $\sigma_a$；
@@ -54,7 +62,9 @@ $$\sigma_a = \frac{1}{2\pi}\sqrt{\frac{\mathcal{L}_0}{f_0}} \tag{10.3}$$
 
 > [!note] 白噪声 + 数字滤波器整形
 > 先按 10.1.1 生成平坦轮廓抖动序列，再通过数字滤波器 $H(f)$ 整形。由随机过程通过线性系统的性质（$S_y = |H|^2 S_x$），结果相位噪声为：
-> $$\mathcal{L}(f) = |H(f)|^2\,\mathcal{L}_0$$
+> $$
+> \mathcal{L}(f) = |H(f)|^2\,\mathcal{L}_0
+> $$
 
 **算法步骤**：
 1. 生成平坦轮廓抖动序列（10.1.1）；
@@ -67,19 +77,27 @@ $$\sigma_a = \frac{1}{2\pi}\sqrt{\frac{\mathcal{L}_0}{f_0}} \tag{10.3}$$
 
 **算法**：生成平坦谱高斯序列 $l_k$（方差 $\sigma_l^2$），送入累加器：
 
-$$a_k = a_{k-1} + l_k$$
+$$
+a_k = a_{k-1} + l_k
+$$
 
 即 $a_k$ 是 $l_k$ 的**随机游走**（离散积分）。推导如下：$S_l(f) = \sigma_l^2/f_0$；累加器的传递函数为 $1/(1-e^{-j2\pi f/f_0})$，故
 
-$$S_a(f) = \frac{S_l(f)}{\left|1-e^{-j2\pi f/f_0}\right|^2} \tag{10.4}$$
+$$
+S_a(f) = \frac{S_l(f)}{\left|1-e^{-j2\pi f/f_0}\right|^2} \tag{10.4}
+$$
 
 在关心区域 $f \ll f_0$，$\left|1-e^{-j2\pi f/f_0}\right|^2 \approx (2\pi f/f_0)^2$，代入式 (10.1)：
 
-$$\mathcal{L}(f) = \left(\frac{f_0}{2\pi f}\right)^2 \frac{\sigma_l^2}{f_0}\,\omega_0^2 = \frac{f_0^3\,\sigma_l^2}{f^2} \tag{10.5}$$
+$$
+\mathcal{L}(f) = \left(\frac{f_0}{2\pi f}\right)^2 \frac{\sigma_l^2}{f_0}\,\omega_0^2 = \frac{f_0^3\,\sigma_l^2}{f^2} \tag{10.5}
+$$
 
 与目标轮廓 $\mathcal{L}(f) = \mathcal{L}_1 f_1^2/f^2$（$\mathcal{L}_1$ 为偏移 $f_1$ 处的相位噪声）联立，解出：
 
-$$\sigma_l = \frac{f_1}{f_0}\sqrt{\frac{\mathcal{L}_1}{f_0}} \tag{10.6}$$
+$$
+\sigma_l = \frac{f_1}{f_0}\sqrt{\frac{\mathcal{L}_1}{f_0}} \tag{10.6}
+$$
 
 **算法步骤**：
 1. 按式 (10.6) 由 $(\mathcal{L}_1, f_1)$ 计算 $\sigma_l$；
@@ -98,27 +116,39 @@ $1/f$ 谱是闪烁噪声（flicker noise）的典型特征，无法由单一有�
 
 设目标频段为 $[f_{\min}, f_{\max}]$，滤波器拐点频率应至少覆盖同一区间；取 $f_{\max} = 10^N f_{\min}$，第 $n$ 个滤波器（$n = 0 \dots N$）为：
 
-$$H_n(f) = \frac{10^{-n/2}}{1 + j\,f/(10^n f_{\min})} \tag{10.7}$$
+$$
+H_n(f) = \frac{10^{-n/2}}{1 + j\,f/(10^n f_{\min})} \tag{10.7}
+$$
 
 即拐点频率每十倍频抬高 10 倍，增益每十倍频降低 $1/\sqrt{10}$。输出过程 PSD 为：
 
-$$S_a(f) = \left|\sum_{n=0}^{N} H_n(f)\right|^2 S_l(f), \qquad S_l(f) = \frac{\sigma_l^2}{f_0} \tag{10.8}$$
+$$
+S_a(f) = \left|\sum_{n=0}^{N} H_n(f)\right|^2 S_l(f), \qquad S_l(f) = \frac{\sigma_l^2}{f_0} \tag{10.8}
+$$
 
 **系数 $\gamma$ 的由来**：在第 $n_0$ 个滤波器的拐点 $f = 10^{n_0}f_{\min}$ 附近，主要贡献来自该滤波器本身及左右相邻两个：
 
-$$\left|\sum_{n=0}^{N} H_n(10^{n_0}f_{\min})\right|^2 \approx \left|H_{n_0-1} + H_{n_0} + H_{n_0+1}\right|^2 = \frac{1}{10^{n_0}}\underbrace{\left|\frac{\sqrt{10}}{1+j10} + \frac{1}{1+j} + \frac{\sqrt{10}}{10+j}\right|^2}_{\gamma\;\approx\;1.426} \tag{10.9-10.10}$$
+$$
+\left|\sum_{n=0}^{N} H_n(10^{n_0}f_{\min})\right|^2 \approx \left|H_{n_0-1} + H_{n_0} + H_{n_0+1}\right|^2 = \frac{1}{10^{n_0}}\underbrace{\left|\frac{\sqrt{10}}{1+j10} + \frac{1}{1+j} + \frac{\sqrt{10}}{10+j}\right|^2}_{\gamma\;\approx\;1.426} \tag{10.9-10.10}
+$$
 
 由于该值在每个拐点处都满足"与频率成反比"的标度，整条合成曲线满足：
 
-$$\left|\sum_{n=0}^{N} H_n(f)\right|^2 = \gamma\,\frac{f_{\min}}{f} \tag{10.11}$$
+$$
+\left|\sum_{n=0}^{N} H_n(f)\right|^2 = \gamma\,\frac{f_{\min}}{f} \tag{10.11}
+$$
 
 代入式 (10.8) 与 (10.1)，得 $1/f$ 轮廓的相位噪声：
 
-$$\mathcal{L}(f) = \frac{4\pi^2 f_0\,\sigma_l^2\,\gamma f_{\min}}{f} \tag{10.12}$$
+$$
+\mathcal{L}(f) = \frac{4\pi^2 f_0\,\sigma_l^2\,\gamma f_{\min}}{f} \tag{10.12}
+$$
 
 与目标 $\mathcal{L}(f) = \mathcal{L}_1 f_1/f$ 联立，解出输入噪声方差：
 
-$$\sigma_l^2 = \frac{\mathcal{L}_1 f_1}{4\pi^2\gamma f_{\min} f_0} \tag{10.13}$$
+$$
+\sigma_l^2 = \frac{\mathcal{L}_1 f_1}{4\pi^2\gamma f_{\min} f_0} \tag{10.13}
+$$
 
 **1/f 算法步骤**：
 1. 选定覆盖目标频段的 $f_{\min}, f_{\max}$，按式 (10.13) 计算 $\sigma_l$；
@@ -128,7 +158,9 @@ $$\sigma_l^2 = \frac{\mathcal{L}_1 f_1}{4\pi^2\gamma f_{\min} f_0} \tag{10.13}$$
 
 **1/f³ 轮廓**：在已得到的 $1/f$ 序列基础上**再做一次累加积分**（同 10.1.3），PSD 增加因子 $[f_0/(2\pi f)]^2$，最终：
 
-$$\mathcal{L}(f) = \frac{\sigma_l^2\,\gamma f_{\min} f_0^3}{f^3},\qquad \sigma_l^2 = \frac{\mathcal{L}_1 f_1^3}{\gamma f_{\min} f_0^3} \tag{10.14-10.15}$$
+$$
+\mathcal{L}(f) = \frac{\sigma_l^2\,\gamma f_{\min} f_0^3}{f^3},\qquad \sigma_l^2 = \frac{\mathcal{L}_1 f_1^3}{\gamma f_{\min} f_0^3} \tag{10.14-10.15}
+$$
 
 即目标为 $\mathcal{L}(f) = \mathcal{L}_1 f_1^3/f^3$ 时按上式设定 $\sigma_l$，流程为"滤波器组求和 → `cumsum`"。
 
@@ -154,15 +186,21 @@ $$\mathcal{L}(f) = \frac{\sigma_l^2\,\gamma f_{\min} f_0^3}{f^3},\qquad \sigma_l
 
 **问题**：给定抖动时钟上升沿时刻数组 $t_k$（$k = 0 \dots n-1$，来自瞬态仿真或测量），提取抖动信息。绝对抖动定义为实际边沿相对理想时钟边沿的位移：
 
-$$a_k := t_k - kT - t_{OS} \tag{10.16}$$
+$$
+a_k := t_k - kT - t_{OS} \tag{10.16}
+$$
 
 其中 $T$ 为理想周期、$t_{OS}$ 为允许的时间偏移，二者皆未知，需要两个准则定解：
 
 1. **抖动零均值**：$\sum_k a_k = 0$，给出
-$$t_{OS} = \frac{1}{n}\sum_{k=0}^{n-1}(t_k - kT) \tag{10.18}$$
+$$
+t_{OS} = \frac{1}{n}\sum_{k=0}^{n-1}(t_k - kT) \tag{10.18}
+$$
 2. **抖动方差最小**：$\partial \sum_k a_k^2 / \partial T = 0$。由 $\partial a_k/\partial T = (n-1)/2 - k$ 化简得 $\sum_k k\,a_k = 0$，最终：
 
-$$T = \frac{12}{n(n^2-1)}\sum_{k=0}^{n-1}\left(k - \frac{n-1}{2}\right)t_k \tag{10.22}$$
+$$
+T = \frac{12}{n(n^2-1)}\sum_{k=0}^{n-1}\left(k - \frac{n-1}{2}\right)t_k \tag{10.22}
+$$
 
 > [!important] 最小二乘周期 ≠ 平均周期
 > 直觉猜测 $T$ 等于平均周期 $(t_{n-1}-t_0)/(n-1)$，仅对 $n = 2, 3$ 成立；$n > 3$ 时正确的 $T$ 依赖中间各点的具体分布，可能大于或小于平均周期。
@@ -174,7 +212,9 @@ $$T = \frac{12}{n(n^2-1)}\sum_{k=0}^{n-1}\left(k - \frac{n-1}{2}\right)t_k \tag{
 
 **等价视角：回归直线**。把 $(k, t_k)$ 画在二维图上，理想时钟对应一条斜率为 $T$ 的直线，抖动即各点相对"最佳拟合直线"的残差。$n$ 个点的最小二乘回归线 $y = \beta_1 x + \beta_0$：
 
-$$\beta_1 = \frac{n\sum x_k y_k - \sum x_k \sum y_k}{n\sum x_k^2 - \left(\sum x_k\right)^2},\qquad \beta_0 = \frac{\sum y_k - \beta_1 \sum x_k}{n} \tag{10.23-10.24}$$
+$$
+\beta_1 = \frac{n\sum x_k y_k - \sum x_k \sum y_k}{n\sum x_k^2 - \left(\sum x_k\right)^2},\qquad \beta_0 = \frac{\sum y_k - \beta_1 \sum x_k}{n} \tag{10.23-10.24}
+$$
 
 代入 $x_k = k$、$y_k = t_k$、$\beta_1 = T$、$\beta_0 = t_{OS}$，与式 (10.18)、(10.22) 完全相同——两种推导是同一回事。
 
@@ -199,19 +239,27 @@ $$\beta_1 = \frac{n\sum x_k y_k - \sum x_k \sum y_k}{n\sum x_k^2 - \left(\sum x_
 
 高斯 PDF 与其 CDF：
 
-$$n(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),\qquad N(x) = \int_{-\infty}^{x} n(t)\,dt \tag{10.25-10.26}$$
+$$
+n(x) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),\qquad N(x) = \int_{-\infty}^{x} n(t)\,dt \tag{10.25-10.26}
+$$
 
 借助互补误差函数可写成闭合形式：
 
-$$N(x) = \frac{1}{2}\,\mathrm{erfc}\left(-\frac{x-\mu}{\sigma\sqrt{2}}\right) \tag{10.28}$$
+$$
+N(x) = \frac{1}{2}\,\mathrm{erfc}\left(-\frac{x-\mu}{\sigma\sqrt{2}}\right) \tag{10.28}
+$$
 
 反演得基本关系：
 
-$$-\sqrt{2}\,\mathrm{erfc}^{-1}\left[2N(x)\right] = \frac{x-\mu}{\sigma} \tag{10.29}$$
+$$
+-\sqrt{2}\,\mathrm{erfc}^{-1}\left[2N(x)\right] = \frac{x-\mu}{\sigma} \tag{10.29}
+$$
 
 据此定义任意 CDF $F(x)$ 的 **Q-scale 变换**：
 
-$$Q(x) := -\sqrt{2}\,\mathrm{erfc}^{-1}\left[2F(x)\right] \tag{10.30}$$
+$$
+Q(x) := -\sqrt{2}\,\mathrm{erfc}^{-1}\left[2F(x)\right] \tag{10.30}
+$$
 
 > [!important] 线性化性质
 > 若 $F(x)$ 是高斯 CDF，则 $Q(x)$ 是**直线**：斜率 $1/\sigma$，与 x 轴交于 $\mu$。于是"在尾部拟合高斯"变成"在变换域拟合直线"，$\mu$、$\sigma$ 从直线参数直接读出。
@@ -229,15 +277,21 @@ $$Q(x) := -\sqrt{2}\,\mathrm{erfc}^{-1}\left[2F(x)\right] \tag{10.30}$$
 
 改进思路（源自 Popovici 对数字链路误码率外推的工作，后经发展用于专用测试设备）：承认待拟合高斯带有**幅度因子** $A \leq 1$：
 
-$$n_A(x) = A\cdot n(x) = \frac{A}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),\qquad N_A(x) = A\cdot N(x) \tag{10.31}$$
+$$
+n_A(x) = A\cdot n(x) = \frac{A}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right),\qquad N_A(x) = A\cdot N(x) \tag{10.31}
+$$
 
 把 CDF 先除以 $A$ 再做 Q-scale，仍可线性化：
 
-$$-\sqrt{2}\,\mathrm{erfc}^{-1}\left(\frac{2N_A(x)}{A}\right) = \frac{x-\mu}{\sigma} \tag{10.32}$$
+$$
+-\sqrt{2}\,\mathrm{erfc}^{-1}\left(\frac{2N_A(x)}{A}\right) = \frac{x-\mu}{\sigma} \tag{10.32}
+$$
 
 因变换前多了"除以幅度 $A$"这一步，故称**归一化 Q-scale**（normalized Q-scale）。$A$ 本身也是待估参数，识别方法是：把待测 CDF 除以可变因子 $k$ 后施加变换：
 
-$$-\sqrt{2}\,\mathrm{erfc}^{-1}\left(\frac{2F(x)}{k}\right) \tag{10.33}$$
+$$
+-\sqrt{2}\,\mathrm{erfc}^{-1}\left(\frac{2F(x)}{k}\right) \tag{10.33}
+$$
 
 **只有 $k = A$ 时结果才是完美直线**；$k$ 偏离 $A$ 时曲线弯曲。因此扫描 $k$、取线性度最佳者即得 $A$。
 

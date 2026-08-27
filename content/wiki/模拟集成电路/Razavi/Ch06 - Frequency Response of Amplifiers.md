@@ -15,7 +15,9 @@ date: 2026-08-02
 
 **Miller 定理**：若图 6.2(a) 的电路可转换为图 6.2(b)，则
 
-$$Z_1 = \frac{Z}{1 - A_v}, \quad Z_2 = \frac{Z}{1 - A_v^{-1}}, \quad A_v = \frac{V_Y}{V_X}$$
+$$
+Z_1 = \frac{Z}{1 - A_v}, \quad Z_2 = \frac{Z}{1 - A_v^{-1}}, \quad A_v = \frac{V_Y}{V_X}
+$$
 
 它将一个"浮动"阻抗 $Z$ 分解为两个"接地"阻抗，使每个节点可以独立关联一个极点。
 
@@ -32,7 +34,9 @@ $$Z_1 = \frac{Z}{1 - A_v}, \quad Z_2 = \frac{Z}{1 - A_v^{-1}}, \quad A_v = \frac
 
 在许多电路中，每个节点对地贡献一个极点：
 
-$$\omega_j = \frac{1}{\tau_j}, \quad \tau_j = R_{\text{eq},j} \cdot C_{\text{eq},j}$$
+$$
+\omega_j = \frac{1}{\tau_j}, \quad \tau_j = R_{\text{eq},j} \cdot C_{\text{eq},j}
+$$
 
 $R_{\text{eq},j}$ 和 $C_{\text{eq},j}$ 分别为节点 $j$ 对地的总等效电阻和总电容。
 
@@ -55,13 +59,19 @@ $R_{\text{eq},j}$ 和 $C_{\text{eq},j}$ 分别为节点 $j$ 对地的总等效�
 
 Miller 近似下的极点估计：
 
-$$\omega_{in} = \frac{1}{R_S\left[C_{GS} + (1 + g_m R_D)C_{GD}\right]}$$
+$$
+\omega_{in} = \frac{1}{R_S\left[C_{GS} + (1 + g_m R_D)C_{GD}\right]}
+$$
 
-$$\omega_{out} \approx \frac{1}{R_D\left(C_{DB} + C_{GD}\right)} \quad (\text{当 } A_v \gg 1)$$
+$$
+\omega_{out} \approx \frac{1}{R_D\left(C_{DB} + C_{GD}\right)} \quad (\text{当 } A_v \gg 1)
+$$
 
 直接分析得到的精确传输函数（$\lambda=0$）：
 
-$$\frac{V_{out}}{V_{in}} = \frac{(C_{GD}s - g_m)R_D}{R_S \xi s^2 + \left[R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})\right]s + 1}$$
+$$
+\frac{V_{out}}{V_{in}} = \frac{(C_{GD}s - g_m)R_D}{R_S \xi s^2 + \left[R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})\right]s + 1}
+$$
 
 其中 $\xi = C_{GS}C_{GD} + C_{GS}C_{DB} + C_{GD}C_{DB}$。
 
@@ -72,9 +82,13 @@ $$\frac{V_{out}}{V_{in}} = \frac{(C_{GD}s - g_m)R_D}{R_S \xi s^2 + \left[R_S C_{
 
 主导极点近似（$|\omega_{p1}| \ll |\omega_{p2}|$）：
 
-$$\omega_{p1} \approx \frac{1}{R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})}$$
+$$
+\omega_{p1} \approx \frac{1}{R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})}
+$$
 
-$$\omega_{p2} \approx \frac{R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})}{R_S R_D \xi}$$
+$$
+\omega_{p2} \approx \frac{R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB})}{R_S R_D \xi}
+$$
 
 输入阻抗（高频）：当 $C_{GD}$ 很大时，$1/g_{m1}$ 和 $R_D$ 并联出现在输入端——输入不再纯容性。
 
@@ -82,7 +96,9 @@ $$\omega_{p2} \approx \frac{R_S C_{GS} + R_S(1+g_m R_D)C_{GD} + R_D(C_{GD}+C_{DB
 
 传输函数（忽略沟长调制和体效应）：
 
-$$\frac{V_{out}}{V_{in}} = \frac{C_{GS}s + g_m}{R_S C_{GS} C_L s^2 + (C_L + g_m R_S C_{GS})s + g_m}$$
+$$
+\frac{V_{out}}{V_{in}} = \frac{C_{GS}s + g_m}{R_S C_{GS} C_L s^2 + (C_L + g_m R_S C_{GS})s + g_m}
+$$
 
 > [!important] 左半平面零点
 > 零点 $s_z = -g_m/C_{GS}$（约为 $-2\pi f_T$），位于左半平面。高频时通过 $C_{GS}$ 传导的信号与晶体管本征信号同极性相加。
@@ -96,14 +112,18 @@ $$\frac{V_{out}}{V_{in}} = \frac{C_{GS}s + g_m}{R_S C_{GS} C_L s^2 + (C_L + g_m 
 
 输出阻抗：
 
-$$Z_{out} = \frac{R_S C_{GS} s + 1}{C_{GS} s + g_m}$$
+$$
+Z_{out} = \frac{R_S C_{GS} s + 1}{C_{GS} s + g_m}
+$$
 
 - 低频：$Z_{out} \approx 1/g_m$
 - 高频：$Z_{out} \approx R_S$（因 $C_{GS}$ 短接栅源）
 
 由于 $Z_{out}$ 随频率增大（通常 $1/g_m < R_S$），输出阻抗表现为**感性**：
 
-$$L = \frac{C_{GS}}{g_m}\left(R_S - \frac{1}{g_m}\right)$$
+$$
+L = \frac{C_{GS}}{g_m}\left(R_S - \frac{1}{g_m}\right)
+$$
 
 这就是"有源电感"原理，可用于带宽扩展（图 6.30b），但代价是消耗电压余度。
 
@@ -111,9 +131,13 @@ $$L = \frac{C_{GS}}{g_m}\left(R_S - \frac{1}{g_m}\right)$$
 
 传输函数（忽略沟长调制）：
 
-$$\frac{V_{out}}{V_{in}} = \frac{g_m R_D}{(1 + \frac{s}{\omega_{p,in}})(1 + \frac{s}{\omega_{p,out}})}$$
+$$
+\frac{V_{out}}{V_{in}} = \frac{g_m R_D}{(1 + \frac{s}{\omega_{p,in}})(1 + \frac{s}{\omega_{p,out}})}
+$$
 
-$$\omega_{p,in} = \frac{1}{R_S(C_{GS}+C_{SB})}, \quad \omega_{p,out} = \frac{1}{R_D(C_{GD}+C_{DB})}$$
+$$
+\omega_{p,in} = \frac{1}{R_S(C_{GS}+C_{SB})}, \quad \omega_{p,out} = \frac{1}{R_D(C_{GD}+C_{DB})}
+$$
 
 > [!important] 无 Miller 乘法
 > CG 级不存在 Miller 乘法效应，因此具有宽带特性。但低输入阻抗（$\approx 1/g_m$）可能成为前级的负载。
@@ -122,7 +146,9 @@ $$\omega_{p,in} = \frac{1}{R_S(C_{GS}+C_{SB})}, \quad \omega_{p,out} = \frac{1}{
 
 若栅极有串联电阻 $R_G$，极点降低为：
 
-$$\omega_p = \frac{1}{(R_S + R_G)C_{GS} + \left[R_S + R_G(1+g_m R_S)\right]C_{GD}}$$
+$$
+\omega_p = \frac{1}{(R_S + R_G)C_{GS} + \left[R_S + R_G(1+g_m R_S)\right]C_{GD}}
+$$
 
 ### 6.5 共源共栅级 (Cascode Stage)
 
@@ -130,15 +156,23 @@ $$\omega_p = \frac{1}{(R_S + R_G)C_{GS} + \left[R_S + R_G(1+g_m R_S)\right]C_{GD
 
 $M_1$ 的 $C_{GD1}$ 的 Miller 乘法因子由 $A$ 到 $X$ 的增益决定（而非整体增益）：
 
-$$\text{Miller 因子} \approx 1 + \frac{g_{m1}}{g_{m2} + g_{mb2}} \approx 2 \quad (\text{两管尺寸相近})$$
+$$
+\text{Miller 因子} \approx 1 + \frac{g_{m1}}{g_{m2} + g_{mb2}} \approx 2 \quad (\text{两管尺寸相近})
+$$
 
 三个极点估计：
 
-$$\omega_{p,A} \approx \frac{1}{R_S\left[C_{GS1} + \left(1 + \frac{g_{m1}}{g_{m2}+g_{mb2}}\right)C_{GD1}\right]}$$
+$$
+\omega_{p,A} \approx \frac{1}{R_S\left[C_{GS1} + \left(1 + \frac{g_{m1}}{g_{m2}+g_{mb2}}\right)C_{GD1}\right]}
+$$
 
-$$\omega_{p,X} \approx \frac{g_{m2} + g_{mb2}}{2C_{GD1} + C_{DB1} + C_{SB2} + C_{GS2}} \quad (\approx 2\pi f_T / 2)$$
+$$
+\omega_{p,X} \approx \frac{g_{m2} + g_{mb2}}{2C_{GD1} + C_{DB1} + C_{SB2} + C_{GS2}} \quad (\approx 2\pi f_T / 2)
+$$
 
-$$\omega_{p,Y} \approx \frac{1}{R_D(C_{DB2} + C_{GD2} + C_L)}$$
+$$
+\omega_{p,Y} \approx \frac{1}{R_D(C_{DB2} + C_{GD2} + C_L)}
+$$
 
 一般 $\omega_{p,X}$ 远高于另外两个极点。
 
@@ -151,7 +185,9 @@ $$\omega_{p,Y} \approx \frac{1}{R_D(C_{DB2} + C_{GD2} + C_L)}$$
 
 共模抑制比 CMRR 随频率退化：
 
-$$\text{CMRR}(s) \approx \frac{g_m \cdot (1 + 2g_{m3}r_{O3}) \cdot r_{O3}}{1 + r_{O3}C_P s} \cdot \frac{1}{\Delta g_m}$$
+$$
+\text{CMRR}(s) \approx \frac{g_m \cdot (1 + 2g_{m3}r_{O3}) \cdot r_{O3}}{1 + r_{O3}C_P s} \cdot \frac{1}{\Delta g_m}
+$$
 
 含零点 $s_z \approx -2g_{m3}/C_P$ 和极点 $s_p = -1/(r_{O3}C_P)$。零点的幅度远大于极点，使得 $1/(r_{O3}C_P)$ 是 CMRR 恶化的起始频率。
 
@@ -171,7 +207,9 @@ $$\text{CMRR}(s) \approx \frac{g_m \cdot (1 + 2g_{m3}r_{O3}) \cdot r_{O3}}{1 + r
 
 **单极点系统**（输出负载电容主导）：
 
-$$\text{GBW} = |A_0| \cdot \omega_p = \frac{g_{m1}}{C_L} \quad (\text{约等于单位增益带宽 } \omega_u)$$
+$$
+\text{GBW} = |A_0| \cdot \omega_p = \frac{g_{m1}}{C_L} \quad (\text{约等于单位增益带宽 } \omega_u)
+$$
 
 - 示例：$g_{m1} = (100\Omega)^{-1}$，$C_L = 50\text{ fF}$，则 GBW = 31.8 GHz
 - Cascode 不增大 GBW：输出阻抗和增益各升 $K$ 倍，但带宽降 $K$ 倍，乘积不变
@@ -188,7 +226,9 @@ $$\text{GBW} = |A_0| \cdot \omega_p = \frac{g_{m1}}{C_L} \quad (\text{约等于�
 
 Middlebrook 定理：当向已知传输函数 $H(s)$ 的电路中添加额外元件 $Z_1$，新传输函数为：
 
-$$G(s) = H(s) \cdot \frac{1 + \frac{Z_{out,0}}{Z_1}}{1 + \frac{Z_{in,0}}{Z_1}}$$
+$$
+G(s) = H(s) \cdot \frac{1 + \frac{Z_{out,0}}{Z_1}}{1 + \frac{Z_{in,0}}{Z_1}}
+$$
 
 其中 $Z_{out,0}$ 是在维持 $V_{out}=0$ 条件下 $Z_1$ 端口的电压-电流比（$V_{in}$ 不为零），$Z_{in,0}$ 是 $V_{in}=0$ 时 $Z_1$ 端口的阻抗。
 
@@ -198,7 +238,9 @@ $$G(s) = H(s) \cdot \frac{1 + \frac{Z_{out,0}}{Z_1}}{1 + \frac{Z_{in,0}}{Z_1}}$$
 
 **核心思想**：主导极点（若存在）由所有零值时间常数之和的倒数给出：
 
-$$\omega_{p1} \approx \frac{1}{\sum_{j=1}^{n} R_j C_j}$$
+$$
+\omega_{p1} \approx \frac{1}{\sum_{j=1}^{n} R_j C_j}
+$$
 
 其中 $R_j$ 是电容 $C_j$ 两端看到的等效电阻，此时**所有其他电容设为零**（开路），且**输入设为零**。
 
@@ -209,13 +251,21 @@ $$\omega_{p1} \approx \frac{1}{\sum_{j=1}^{n} R_j C_j}$$
 
 **应用示例**——电阻退化 CS 级的 −3 dB 带宽估算：
 
-$$\tau_{CGS} = \frac{R_S + R_G}{1 + g_m R_S} C_{GS}$$
+$$
+\tau_{CGS} = \frac{R_S + R_G}{1 + g_m R_S} C_{GS}
+$$
 
-$$\tau_{CGD} = \left[R_D + R_G\left(1 + \frac{g_m R_D}{1 + g_m R_S}\right)\right] C_{GD}$$
+$$
+\tau_{CGD} = \left[R_D + R_G\left(1 + \frac{g_m R_D}{1 + g_m R_S}\right)\right] C_{GD}
+$$
 
-$$\tau_{CL} = R_D C_L$$
+$$
+\tau_{CL} = R_D C_L
+$$
 
-$$\omega_{-3\text{dB}} \approx \frac{1}{\tau_{CGS} + \tau_{CGD} + \tau_{CL}}$$
+$$
+\omega_{-3\text{dB}} \approx \frac{1}{\tau_{CGS} + \tau_{CGD} + \tau_{CL}}
+$$
 
 ## 设计启示
 

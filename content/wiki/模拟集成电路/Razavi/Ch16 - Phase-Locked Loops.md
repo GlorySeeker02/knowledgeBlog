@@ -25,7 +25,9 @@ PLL 是一个**相位负反馈系统**：鉴相器（PD）比较输入输出相�
 > PLL **锁定** 的充要条件： $\phi_{out} - \phi_{in}$ **不随时间变化**。
 >
 > 推论：
-> $$\frac{d\phi_{out}}{dt} = \frac{d\phi_{in}}{dt} \quad\Rightarrow\quad \boxed{\omega_{out} = \omega_{in}}$$
+> $$
+> \frac{d\phi_{out}}{dt} = \frac{d\phi_{in}}{dt} \quad\Rightarrow\quad \boxed{\omega_{out} = \omega_{in}}
+> $$
 >
 > 这就是 PLL 区别于频率锁定环（FLL）的核心优势——锁定后**频率完全相等**，不存在确定性的频率误差。
 
@@ -97,15 +99,21 @@ DLL 的主要局限：**不能生成可变频率**，且可能存在锁定延迟
 
 **开通传递函数**（PD + 一阶 LPF + VCO）：
 
-$$H_{open}(s) = K_{PD} \cdot \frac{1}{1 + s/\omega_{LPF}} \cdot \frac{K_{VCO}}{s}$$
+$$
+H_{open}(s) = K_{PD} \cdot \frac{1}{1 + s/\omega_{LPF}} \cdot \frac{K_{VCO}}{s}
+$$
 
 闭环传递函数：
 
-$$H(s) = \frac{\Phi_{out}}{\Phi_{in}}(s) = \frac{K_{PD}K_{VCO} \cdot \omega_{LPF}}{s(s + \omega_{LPF}) + K_{PD}K_{VCO} \cdot \omega_{LPF}}$$
+$$
+H(s) = \frac{\Phi_{out}}{\Phi_{in}}(s) = \frac{K_{PD}K_{VCO} \cdot \omega_{LPF}}{s(s + \omega_{LPF}) + K_{PD}K_{VCO} \cdot \omega_{LPF}}
+$$
 
 写成标准二阶形式 $s^2 + 2\zeta \omega_n s + \omega_n^2$：
 
-$$\boxed{\omega_n = \sqrt{K_{PD}K_{VCO} \cdot \omega_{LPF}},\qquad \zeta = \frac{1}{2}\sqrt{\frac{\omega_{LPF}}{K_{PD}K_{VCO}}}}$$
+$$
+\boxed{\omega_n = \sqrt{K_{PD}K_{VCO} \cdot \omega_{LPF}},\qquad \zeta = \frac{1}{2}\sqrt{\frac{\omega_{LPF}}{K_{PD}K_{VCO}}}}
+$$
 
 > [!warning] Type-I PLL 的四重折中
 > 1. **相位误差** vs **稳定性**：$\phi_{out} - \phi_{in} \propto 1/(K_{PD}K_{VCO})$，但 $\zeta \propto 1/\sqrt{K_{PD}K_{VCO}}$——降低相位误差会恶化稳定性
@@ -115,35 +123,49 @@ $$\boxed{\omega_n = \sqrt{K_{PD}K_{VCO} \cdot \omega_{LPF}},\qquad \zeta = \frac
 
 **欠阻尼阶跃响应**（$\zeta < 1$）：
 
-$$\omega_{out}(t) = \Delta\omega \left[1 - \frac{1}{\sqrt{1-\zeta^2}} e^{-\zeta\omega_n t} \sin\left(\omega_n \sqrt{1-\zeta^2}\,t + \theta\right)\right]$$
+$$
+\omega_{out}(t) = \Delta\omega \left[1 - \frac{1}{\sqrt{1-\zeta^2}} e^{-\zeta\omega_n t} \sin\left(\omega_n \sqrt{1-\zeta^2}\,t + \theta\right)\right]
+$$
 
 建立时间常数：$\tau = (\zeta\omega_n)^{-1}$
 
 **误差传递函数**：
 
-$$H_e(s) = \frac{\Phi_{in} - \Phi_{out}}{\Phi_{in}} = \frac{s^2 + s\omega_{LPF}}{s^2 + s\omega_{LPF} + K_{PD}K_{VCO}\,\omega_{LPF}}$$
+$$
+H_e(s) = \frac{\Phi_{in} - \Phi_{out}}{\Phi_{in}} = \frac{s^2 + s\omega_{LPF}}{s^2 + s\omega_{LPF} + K_{PD}K_{VCO}\,\omega_{LPF}}
+$$
 
 频率阶跃 $\Delta\omega$ 引起的稳态相位误差：
 
-$$\boxed{\phi_{out} - \phi_{in} = \frac{\Delta\omega}{K_{PD}K_{VCO}}}$$
+$$
+\boxed{\phi_{out} - \phi_{in} = \frac{\Delta\omega}{K_{PD}K_{VCO}}}
+$$
 
 ### Type-II PLL（电荷泵 PLL）
 
 **PFD/CP/LPF 传递函数**（仅电容）：
 
-$$\frac{V_{out}}{\Delta\phi}(s) = \frac{I_P}{2\pi C_P} \cdot \frac{1}{s}$$
+$$
+\frac{V_{out}}{\Delta\phi}(s) = \frac{I_P}{2\pi C_P} \cdot \frac{1}{s}
+$$
 
 **加入串联电阻 $R_P$ 后**（引入零点稳定系统）：
 
-$$\frac{V_{out}}{\Delta\phi}(s) = \frac{I_P}{2\pi}\left(R_P + \frac{1}{C_P s}\right)$$
+$$
+\frac{V_{out}}{\Delta\phi}(s) = \frac{I_P}{2\pi}\left(R_P + \frac{1}{C_P s}\right)
+$$
 
 开通传递函数：
 
-$$H_{open}(s) = \frac{I_P}{2\pi}\left(R_P + \frac{1}{C_P s}\right)\frac{K_{VCO}}{s}$$
+$$
+H_{open}(s) = \frac{I_P}{2\pi}\left(R_P + \frac{1}{C_P s}\right)\frac{K_{VCO}}{s}
+$$
 
 闭环传递函数（标准二阶形式）：
 
-$$\boxed{\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi C_P}},\qquad \zeta = \frac{R_P}{2}\sqrt{\frac{I_P C_P K_{VCO}}{2\pi}}}$$
+$$
+\boxed{\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi C_P}},\qquad \zeta = \frac{R_P}{2}\sqrt{\frac{I_P C_P K_{VCO}}{2\pi}}}
+$$
 
 > [!important] Type-II vs Type-I 稳定性趋势相反
 > - **Type-I**：$K_{PD}K_{VCO}$ **增大** → $\zeta$ **减小** → 稳定性**恶化**
@@ -153,7 +175,9 @@ $$\boxed{\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi C_P}},\qquad \zeta = \frac{R_P
 
 **加入分频器 $\div M$ 后**：
 
-$$\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi M C_P}},\qquad \zeta = \frac{R_P}{2}\sqrt{\frac{I_P C_P K_{VCO}}{2\pi M}}$$
+$$
+\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi M C_P}},\qquad \zeta = \frac{R_P}{2}\sqrt{\frac{I_P C_P K_{VCO}}{2\pi M}}
+$$
 
 分频器使 $\zeta$ 和建立速度均乘以 $1/\sqrt{M}$。补偿方法：按比例增加 $I_P$。
 
@@ -176,7 +200,9 @@ $$\omega_n = \sqrt{\frac{I_P K_{VCO}}{2\pi M C_P}},\qquad \zeta = \frac{R_P}{2}\
 
 VCO 相位噪声到输出的传递函数（Type-II）：
 
-$$\frac{\Phi_{out}}{\Phi_{VCO}}(s) = \frac{s^2}{s^2 + \frac{I_P K_{VCO}}{2\pi}(R_P C_P s + 1)}$$
+$$
+\frac{\Phi_{out}}{\Phi_{VCO}}(s) = \frac{s^2}{s^2 + \frac{I_P K_{VCO}}{2\pi}(R_P C_P s + 1)}
+$$
 
 环路带宽的选择需要在输入抖动抑制和 VCO 噪声抑制之间折中。
 

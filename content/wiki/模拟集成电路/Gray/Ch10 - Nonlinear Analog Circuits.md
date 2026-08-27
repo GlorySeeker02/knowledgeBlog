@@ -37,7 +37,9 @@ Gilbert 乘法器单元根据两个输入端信号幅度（相对于 $V_T$）的
 
 差分输出电流为两个输入电压的双曲正切之积：
 
-$$\Delta I_{out} = I_{EE} \cdot \tanh\!\left(\frac{V_1}{2V_T}\right) \cdot \tanh\!\left(\frac{V_2}{2V_T}\right)$$
+$$
+\Delta I_{out} = I_{EE} \cdot \tanh\!\left(\frac{V_1}{2V_T}\right) \cdot \tanh\!\left(\frac{V_2}{2V_T}\right)
+$$
 
 - **小信号近似** ($V_1, V_2 \ll V_T$)：$\Delta I_{out} \approx I_{EE} \cdot \dfrac{V_1 V_2}{4V_T^2}$
 - **预失真补偿**：串联反双曲正切电路 ($\tanh^{-1}$)，将线性输入范围大幅扩展，实现真正四象限乘法。
@@ -115,7 +117,9 @@ $$
 
 ### 结构三：完整四象限乘法器
 
-$$\text{预失真级（}\tanh^{-1}\text{）} \to \text{乘法器核心（}\tanh\text{）} \to \text{差分-单端转换} \to \text{输出}$$
+$$
+\text{预失真级（}\tanh^{-1}\text{）} \to \text{乘法器核心（}\tanh\text{）} \to \text{差分-单端转换} \to \text{输出}
+$$
 
 - 预失真级由电压-电流转换器 + 二极管连接晶体管构成，天然产生 $\tanh^{-1}$ 特性。
 - $V_2$ 通道的预失真与底部差分对的作用**冗余**——电压-电流转换器的输出可直接馈入交叉耦合对的发射极。

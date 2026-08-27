@@ -74,7 +74,9 @@ Dennard 等人于 1974 年提出了恒定电场缩放法则，包含三条规则
 
 长沟道器件亚阈值漏电流：
 
-$$I_D \approx I_0 \exp\frac{V_{GS} - V_{TH}}{\zeta V_T}, \quad \zeta = 1 + \frac{C_d}{C_{ox}},\quad V_T = \frac{kT}{q}$$
+$$
+I_D \approx I_0 \exp\frac{V_{GS} - V_{TH}}{\zeta V_T}, \quad \zeta = 1 + \frac{C_d}{C_{ox}},\quad V_T = \frac{kT}{q}
+$$
 
 - **亚阈值摆幅** $S = \frac{\partial V_{GS}}{\partial(\log I_D)} = \zeta V_T \cdot \ln 10 \approx 60\zeta$ mV/dec。
 - 若 $C_d = 0.67C_{ox}$，则 $S \approx 100$ mV/dec，即 $V_{GS}$ 每降低 100 mV 电流下降一个 decade。
@@ -109,7 +111,9 @@ $$I_D \approx I_0 \exp\frac{V_{GS} - V_{TH}}{\zeta V_T}, \quad \zeta = 1 + \frac
 
 经验公式：
 
-$$\mu_{eff} = \frac{\mu_0}{1 + \theta(V_{GS} - V_{TH})}, \quad \theta \approx \frac{10^{-7}}{t_{ox}} \text{ (V}^{-1}\text{)}$$
+$$
+\mu_{eff} = \frac{\mu_0}{1 + \theta(V_{GS} - V_{TH})}, \quad \theta \approx \frac{10^{-7}}{t_{ox}} \text{ (V}^{-1}\text{)}
+$$
 
 例：$t_{ox} = 100\text{Å}$ 时 $\theta \approx 1\text{ V}^{-1}$，过驱动电压超过 100 mV 时迁移率即开始显著下降。
 
@@ -125,7 +129,9 @@ $$\mu_{eff} = \frac{\mu_0}{1 + \theta(V_{GS} - V_{TH})}, \quad \theta \approx \f
 
 **极端情况——全沟道速度饱和**：
 
-$$I_D \approx v_{sat} W C_{ox} (V_{GS} - V_{TH})$$
+$$
+I_D \approx v_{sat} W C_{ox} (V_{GS} - V_{TH})
+$$
 
 - 电流**线性**正比于过驱动电压，与 $L$ 无关。
 - **$g_m = v_{sat} W C_{ox}$** 几乎为常数，与偏置电流和沟道长度弱相关——完全不同于平方律器件。
@@ -137,7 +143,9 @@ $$I_D \approx v_{sat} W C_{ox} (V_{GS} - V_{TH})$$
 
 **统一的饱和电流公式**：
 
-$$I_D = \frac{1}{2} \mu_{eff} C_{ox} \frac{W}{L} \frac{(V_{GS} - V_{TH})^2}{1 + \frac{\mu_{eff}}{2 v_{sat} L}(V_{GS} - V_{TH})}$$
+$$
+I_D = \frac{1}{2} \mu_{eff} C_{ox} \frac{W}{L} \frac{(V_{GS} - V_{TH})^2}{1 + \frac{\mu_{eff}}{2 v_{sat} L}(V_{GS} - V_{TH})}
+$$
 
 两个重要推论：
 1. **$L$ 或 $v_{sat}$ 很大时**，公式退化为平方律；
@@ -214,7 +222,9 @@ $$I_D = \frac{1}{2} \mu_{eff} C_{ox} \frac{W}{L} \frac{(V_{GS} - V_{TH})^2}{1 + 
 
 **几何依赖性**：BSIM 系列使用统一的经验公式：
 
-$$P = P_0 + \frac{\alpha_P}{L_{eff}} + \frac{\beta_P}{W_{eff}}$$
+$$
+P = P_0 + \frac{\alpha_P}{L_{eff}} + \frac{\beta_P}{W_{eff}}
+$$
 
 其中 $P_0$ 是长宽器件的参数值，$\alpha_P, \beta_P$ 是拟合系数。这一公式在小尺寸下精度变差。
 

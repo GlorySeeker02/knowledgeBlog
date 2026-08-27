@@ -84,7 +84,9 @@ CB/CG 组态使用 hybrid-π 模型分析不便（受控源跨接在输入输出
 
 #### 5.2 CMRR
 
-$$ \text{CMRR} = \left|\frac{A_{dm}}{A_{cm}}\right| $$
+$$
+\text{CMRR} = \left|\frac{A_{dm}}{A_{cm}}\right|
+$$
 
 - 理想对称时 `Acm-dm = 0` 且 `Adm-cm = 0`
 - 对于射极耦合对：$\text{CMRR} \approx 1 + 2g_m R_{\text{TAIL}}$
@@ -95,7 +97,9 @@ $$ \text{CMRR} = \left|\frac{A_{dm}}{A_{cm}}\right| $$
 
 #### 6.1 输入失调电压 (BJT)
 
-$$ V_{OS} = V_T \left( -\frac{\Delta R_C}{R_C} - \frac{\Delta I_S}{I_S} \right) $$
+$$
+V_{OS} = V_T \left( -\frac{\Delta R_C}{R_C} - \frac{\Delta I_S}{I_S} \right)
+$$
 
 - 电阻失配和饱和电流失配通过 `VT` (26mV) 缩放
 - 失调 ≈ 失配百分比 × `VT`
@@ -103,7 +107,9 @@ $$ V_{OS} = V_T \left( -\frac{\Delta R_C}{R_C} - \frac{\Delta I_S}{I_S} \right) 
 
 #### 6.2 输入失调电压 (MOS)
 
-$$ V_{OS} = \Delta V_t + \frac{V_{ov}}{2} \left( -\frac{\Delta R_D}{R_D} - \frac{\Delta (W/L)}{W/L} \right) $$
+$$
+V_{OS} = \Delta V_t + \frac{V_{ov}}{2} \left( -\frac{\Delta R_D}{R_D} - \frac{\Delta (W/L)}{W/L} \right)
+$$
 
 - **阈值失配项** (`ΔVt`) 是 MOS 特有且最主要的失调来源
 - 几何/负载失配项缩放因子是 `Vov/2`（典型 50–500mV），远大于 BJT 的 `VT` (26mV)
@@ -112,7 +118,9 @@ $$ V_{OS} = \Delta V_t + \frac{V_{ov}}{2} \left( -\frac{\Delta R_D}{R_D} - \frac
 
 #### 6.3 输入失调电流 (BJT only)
 
-$$ I_{OS} \approx \frac{I_C}{\beta_0} \left( \frac{\Delta R_C}{R_C} - \frac{\Delta \beta_0}{\beta_0} \right) $$
+$$
+I_{OS} \approx \frac{I_C}{\beta_0} \left( \frac{\Delta R_C}{R_C} - \frac{\Delta \beta_0}{\beta_0} \right)
+$$
 
 - MOS 栅极输入电流为零，几乎无失调电流
 

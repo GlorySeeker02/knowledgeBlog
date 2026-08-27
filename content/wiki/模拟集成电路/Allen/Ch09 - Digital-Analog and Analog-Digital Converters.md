@@ -54,7 +54,9 @@ tags:
 ## DAC 关键公式与结构
 
 ### 输出方程
-$$v_{OUT} = K \cdot V_{REF} \cdot D, \quad D = \sum_{i=0}^{N-1} \frac{b_i}{2^{i+1}}$$
+$$
+v_{OUT} = K \cdot V_{REF} \cdot D, \quad D = \sum_{i=0}^{N-1} \frac{b_i}{2^{i+1}}
+$$
 
 ### 并行 DAC 三大缩放方法
 
@@ -72,12 +74,20 @@ $$v_{OUT} = K \cdot V_{REF} \cdot D, \quad D = \sum_{i=0}^{N-1} \frac{b_i}{2^{i+
 
 #### 电压缩放 INL/DNL 最坏分析
 对 $2^N$ 个电阻串 ($\pm \Delta R/R$ 公差)：
-$$INL_{\text{worst}} = \frac{2^{N-1}\Delta R/R}{1 - (\Delta R/R)^2} \cdot LSB$$
-$$DNL_{\text{worst}} = \frac{\Delta R}{R} \cdot LSB$$
+$$
+INL_{\text{worst}} = \frac{2^{N-1}\Delta R/R}{1 - (\Delta R/R)^2} \cdot LSB
+$$
+$$
+DNL_{\text{worst}} = \frac{\Delta R}{R} \cdot LSB
+$$
 
 #### 电荷缩放 INL/DNL 最坏分析
-$$INL_{\text{worst}} \approx 2^{N-1} \frac{\Delta C}{C} \cdot LSB$$
-$$DNL_{\text{worst}} \approx (2^N - 1) \frac{\Delta C}{C} \cdot LSB$$
+$$
+INL_{\text{worst}} \approx 2^{N-1} \frac{\Delta C}{C} \cdot LSB
+$$
+$$
+DNL_{\text{worst}} \approx (2^N - 1) \frac{\Delta C}{C} \cdot LSB
+$$
 
 ### 扩展 DAC 分辨率
 
@@ -127,7 +137,9 @@ $$DNL_{\text{worst}} \approx (2^N - 1) \frac{\Delta C}{C} \cdot LSB$$
 4. 闭环反馈型（图 9.5-11/12）：精度高，可自调零消除运放失调。
 
 **S/H 中运放建立时间**：单位增益闭环下，
-$$\epsilon(t) \approx e^{-\omega_a t/2} \cdot \frac{GB}{\omega_a}, \quad t_s = \frac{2}{\omega_a} \ln\left(\frac{GB/\omega_a}{\epsilon}\right)$$
+$$
+\epsilon(t) \approx e^{-\omega_a t/2} \cdot \frac{GB}{\omega_a}, \quad t_s = \frac{2}{\omega_a} \ln\left(\frac{GB/\omega_a}{\epsilon}\right)
+$$
 对 N 位精度 $\epsilon = 0.5\,\text{LSB}$。
 
 ### 串行 ADC
@@ -199,12 +211,16 @@ $$\epsilon(t) \approx e^{-\omega_a t/2} \cdot \frac{GB}{\omega_a}, \quad t_s = \
 ### Delta-Sigma ($\Delta\Sigma$) 调制器
 
 **一阶调制器**：
-$$Y(z) = z^{-1}X(z) + (1 - z^{-1})Q(z)$$
+$$
+Y(z) = z^{-1}X(z) + (1 - z^{-1})Q(z)
+$$
 - STF (信号传递函数) = $z^{-1}$（纯延迟）
 - NTF (噪声传递函数) = $1 - z^{-1}$（高通特性，在直流处有零点）
 
 **$L$ 阶调制器**：NTF = $(1 - z^{-1})^L$，信号带内噪声功率：
-$$n_0 \approx \frac{\Delta^2}{12} \cdot \frac{\pi^{2L}}{(2L+1)} \cdot \frac{1}{M^{2L+1}}$$
+$$
+n_0 \approx \frac{\Delta^2}{12} \cdot \frac{\pi^{2L}}{(2L+1)} \cdot \frac{1}{M^{2L+1}}
+$$
 其中 $\Delta$ 为量化台阶 ($2 V_{REF}$ for single-bit)。
 
 **动态范围**：$DR_{dB} \approx 6.02B - 3.41 + 10(2L+1)\log_{10} M$（$B$ 为内部量化器位数）

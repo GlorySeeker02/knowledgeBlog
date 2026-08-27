@@ -17,7 +17,9 @@ created: 2026-08-02
 
 比较器的输出仅有两个状态：$V_{OH}$（高电平）和 $V_{OL}$（低电平）。以同相比较器为例：
 
-$$v_O = \begin{cases} V_{OH}, & v_P - v_N > 0 \\ V_{OL}, & v_P - v_N < 0 \end{cases}$$
+$$
+v_O = \begin{cases} V_{OH}, & v_P - v_N > 0 \\ V_{OL}, & v_P - v_N < 0 \end{cases}
+$$
 
 这是理想模型。真实比较器含有限增益、输入失调、噪声和传输延迟。
 
@@ -48,22 +50,30 @@ $$v_O = \begin{cases} V_{OH}, & v_P - v_N > 0 \\ V_{OL}, & v_P - v_N < 0 \end{ca
 
 **有限增益与分辨率：**
 
-$$A_v = \frac{V_{OH} - V_{OL}}{V_{IH} - V_{IL}}$$
+$$
+A_v = \frac{V_{OH} - V_{OL}}{V_{IH} - V_{IL}}
+$$
 
 其中 $V_{IH} - V_{IL}$ 是使输出在两个极限状态之间刚好饱和所需的最小输入差，称为**分辨率** $V_{in}(\text{min})$：
 
-$$V_{in}(\text{min}) = \frac{V_{OH} - V_{OL}}{A_v(0)}$$
+$$
+V_{in}(\text{min}) = \frac{V_{OH} - V_{OL}}{A_v(0)}
+$$
 
 **小信号传播延迟（单极点模型）：**
 
-$$t_p = \tau_c \ln\!\left(\frac{2k}{2k-1}\right),\quad k = \frac{V_{in}}{V_{in}(\text{min})}$$
+$$
+t_p = \tau_c \ln\!\left(\frac{2k}{2k-1}\right),\quad k = \frac{V_{in}}{V_{in}(\text{min})}
+$$
 
 - $k$ 为过驱动倍数。$k$ 越大，$t_p$ 越小。
 - 当 $k \gg 1$ 时，$t_p \approx \tau_c/k$。
 
 **大信号（摆率限制）传播延迟：**
 
-$$t_p = \frac{\Delta V}{SR} = \frac{V_{OH} - V_{OL}}{2 \cdot SR}$$
+$$
+t_p = \frac{\Delta V}{SR} = \frac{V_{OH} - V_{OL}}{2 \cdot SR}
+$$
 
 摆率由充放电电流和负载电容决定：$SR = I/C$。
 
@@ -79,17 +89,23 @@ $$t_p = \frac{\Delta V}{SR} = \frac{V_{OH} - V_{OL}}{2 \cdot SR}$$
 
 **增益（两级之积）：**
 
-$$A_v(0) = g_{m1}(r_{ds2}\|r_{ds4}) \cdot g_{m6}(r_{ds6}\|r_{ds7})$$
+$$
+A_v(0) = g_{m1}(r_{ds2}\|r_{ds4}) \cdot g_{m6}(r_{ds6}\|r_{ds7})
+$$
 
 **两个极点：**
 
-$$p_1 = -\frac{1}{R_I C_I},\quad p_2 = -\frac{1}{R_{II} C_{II}}$$
+$$
+p_1 = -\frac{1}{R_I C_I},\quad p_2 = -\frac{1}{R_{II} C_{II}}
+$$
 
 其中 $C_I$ 为第一级输出节点总电容，$C_{II} \approx C_L$。
 
 **两极点的阶跃响应（无摆率限制）：**
 
-$$v_{out}(t_n) = \frac{V_{OH} - V_{OL}}{2k}\left[1 + \frac{m}{1-m}e^{-t_n/m} - \frac{1}{1-m}e^{-t_n}\right]$$
+$$
+v_{out}(t_n) = \frac{V_{OH} - V_{OL}}{2k}\left[1 + \frac{m}{1-m}e^{-t_n/m} - \frac{1}{1-m}e^{-t_n}\right]
+$$
 
 其中 $m = p_2/p_1$，$t_n = -p_1 t$。
 
@@ -98,13 +114,17 @@ $$v_{out}(t_n) = \frac{V_{OH} - V_{OL}}{2k}\left[1 + \frac{m}{1-m}e^{-t_n/m} - \
 
 **归一化传播延迟近似（抛物线近似）：**
 
-$$t_{pn} \approx \sqrt{\frac{mk}{V_{OH} - V_{OL}}},\quad t_p = \frac{t_{pn}}{|p_1|}$$
+$$
+t_{pn} \approx \sqrt{\frac{mk}{V_{OH} - V_{OL}}},\quad t_p = \frac{t_{pn}}{|p_1|}
+$$
 
 适用于 $t_{pn} < 1$ 且 $m < 1$ 的情况。
 
 **正/负摆率：**
 
-$$SR^- = \frac{I_7}{C_{II}},\quad SR^+ = \frac{I_6 - I_7}{C_{II}}$$
+$$
+SR^- = \frac{I_7}{C_{II}},\quad SR^+ = \frac{I_6 - I_7}{C_{II}}
+$$
 
 **初始工作状态（表 8.2-1 摘要）：**
 
@@ -112,13 +132,17 @@ $$SR^- = \frac{I_7}{C_{II}},\quad SR^+ = \frac{I_6 - I_7}{C_{II}}$$
 
 **两级传播延迟计算（摆率限制）：**
 
-$$t_p = t_1 + t_2 = \frac{C_I \Delta V_1}{I_5} + \frac{C_{II} \Delta V_{out}}{I_6 - I_7}$$
+$$
+t_p = t_1 + t_2 = \frac{C_I \Delta V_1}{I_5} + \frac{C_{II} \Delta V_{out}}{I_6 - I_7}
+$$
 
 其中 $\Delta V_1$ 由第一级初始状态到第二级跳变点（trip point）的电压差决定。
 
 **第二级跳变点（Class A 反相器）：**
 
-$$V_{TRP} = V_{DD} - |V_{TP}| - \sqrt{\frac{I_7}{\beta_6}}$$
+$$
+V_{TRP} = V_{DD} - |V_{TP}| - \sqrt{\frac{I_7}{\beta_6}}
+$$
 
 ### 8.3 其他开环比较器
 
@@ -164,11 +188,15 @@ $$V_{TRP} = V_{DD} - |V_{TP}| - \sqrt{\frac{I_7}{\beta_6}}$$
 
 正跳变点（$v_{in}$ 从负向正扫描）：
 
-$$V_{TRP}^+ = v_{GS2} - v_{GS1},\quad i_2 = i_6 = \frac{\beta_6}{\beta_3}i_1,\quad i_1 + i_2 = I_5$$
+$$
+V_{TRP}^+ = v_{GS2} - v_{GS1},\quad i_2 = i_6 = \frac{\beta_6}{\beta_3}i_1,\quad i_1 + i_2 = I_5
+$$
 
 负跳变点：
 
-$$V_{TRP}^- = v_{GS2} - v_{GS1},\quad i_1 = i_7 = \frac{\beta_7}{\beta_4}i_2,\quad i_1 + i_2 = I_5$$
+$$
+V_{TRP}^- = v_{GS2} - v_{GS1},\quad i_1 = i_7 = \frac{\beta_7}{\beta_4}i_2,\quad i_1 + i_2 = I_5
+$$
 
 ### 8.5 离散时间比较器
 
@@ -184,17 +212,23 @@ $$V_{TRP}^- = v_{GS2} - v_{GS1},\quad i_1 = i_7 = \frac{\beta_7}{\beta_4}i_2,\qu
 
 **正指数响应：**
 
-$$\Delta V_{out}(t) = \Delta V_i \cdot e^{t/\tau_L}$$
+$$
+\Delta V_{out}(t) = \Delta V_i \cdot e^{t/\tau_L}
+$$
 
 其中锁存时间常数：
 
-$$\tau_L = \frac{C}{g_m - g_{ds}} \approx \frac{C}{g_m} \propto \frac{L^2}{\mu (V_{GS} - V_T)}$$
+$$
+\tau_L = \frac{C}{g_m - g_{ds}} \approx \frac{C}{g_m} \propto \frac{L^2}{\mu (V_{GS} - V_T)}
+$$
 
 > $\tau_L \propto L^2$：沟道长度是影响锁存速度的最关键参数。
 
 **传播延迟：**
 
-$$t_p = \tau_L \ln\!\left(\frac{V_{OH} - V_{OL}}{2\Delta V_i}\right)$$
+$$
+t_p = \tau_L \ln\!\left(\frac{V_{OH} - V_{OL}}{2\Delta V_i}\right)
+$$
 
 $\Delta V_i$ 越小 → $t_p$ 越大（对数关系）。因此小输入时锁存器非常慢。
 
@@ -220,7 +254,9 @@ $\Delta V_i$ 越小 → $t_p$ 越大（对数关系）。因此小输入时锁�
 
 **预放大器设计（图 8.6-4）：**
 
-$$A_v = \frac{g_{m1}}{g_{m3}} = \sqrt{\frac{\beta_1 I_1}{\beta_3 I_3}},\quad p_1 = \frac{g_{m3}}{C}$$
+$$
+A_v = \frac{g_{m1}}{g_{m3}} = \sqrt{\frac{\beta_1 I_1}{\beta_3 I_3}},\quad p_1 = \frac{g_{m3}}{C}
+$$
 
 - 负载用二极管连接 MOS → 低增益（3~5）但带宽大
 - 改进版（图 8.6-5）：加电流注入管 M5/M6 增强增益 $\sqrt{1 + I_5/I_3}$；加 M7/M8 隔离锁存器回踢噪声

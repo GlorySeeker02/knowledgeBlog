@@ -30,7 +30,9 @@ tags:
 
 > 用晶体管的 $r_o$ 代替电阻作为放大器的负载元件，以较少的直流压降获得高增益。
 
-$$\text{增益} \propto g_m \cdot (r_{o1} \parallel r_{o2})$$
+$$
+\text{增益} \propto g_m \cdot (r_{o1} \parallel r_{o2})
+$$
 
 - BJT：增益与偏置电流**无关**（$g_m \propto I_C$，$r_o \propto 1/I_C$），典型值 1000--2000。
 - MOS：增益与偏置电流**平方根成反比**（平方律区），典型值 10--100。
@@ -39,7 +41,9 @@ $$\text{增益} \propto g_m \cdot (r_{o1} \parallel r_{o2})$$
 
 > 将负温度系数的 $V_{BE}$ 与正温度系数的热电压 $V_T$ 按权重叠加，在特定温度点获得零温度系数。
 
-$$V_\text{OUT} = V_{BE} + M \cdot V_T$$
+$$
+V_\text{OUT} = V_{BE} + M \cdot V_T
+$$
 
 零温度系数时的输出电压接近硅的带隙电压 $\approx 1.205\text{ V}$，故得名 "band-gap reference"。
 
@@ -60,20 +64,26 @@ $$V_\text{OUT} = V_{BE} + M \cdot V_T$$
 
 ### BJT 简单电流镜增益公式
 
-$$I_{OUT} = \frac{I_{S2}}{I_{S1}} \cdot \frac{I_{IN}}{1 + \frac{2}{\beta_F}}$$
+$$
+I_{OUT} = \frac{I_{S2}}{I_{S1}} \cdot \frac{I_{IN}}{1 + \frac{2}{\beta_F}}
+$$
 
 增益误差 $\epsilon = \frac{V_{CE2} - V_{CE1}}{V_A} - \frac{2}{\beta_F}$
 
 ### MOS 简单电流镜增益公式
 
-$$I_{OUT} = \frac{(W/L)_2}{(W/L)_1} \cdot I_{IN}$$
+$$
+I_{OUT} = \frac{(W/L)_2}{(W/L)_1} \cdot I_{IN}
+$$
 
 > [!tip] 设计要点
 > 通常只 ratio 宽度 $W$ 而不 ratio 长度 $L$，因为有效沟道长度的偏移量与 $L_{drawn}$ 无关，ratio 长度会引入工艺依赖的误差。
 
 ### Widlar 电流源（BJT）
 
-$$V_T \ln\frac{I_{IN}}{I_{OUT}} = I_{OUT} R_2$$
+$$
+V_T \ln\frac{I_{IN}}{I_{OUT}} = I_{OUT} R_2
+$$
 
 - 用一个小电阻 $R_2$ 即可将输出电流从 mA 级降到 $\mu\text{A}$ 级。
 - 电源灵敏度远优于简单电流镜：10% 电源电压变化仅导致约 1.6% 输出电流变化。
@@ -87,7 +97,9 @@ $$V_T \ln\frac{I_{IN}}{I_{OUT}} = I_{OUT} R_2$$
 
 ### 带隙基准温度特性
 
-$$V_{OUT}(T) = V_{G0} + (\gamma - \alpha) V_{T0} \left[ \frac{T}{T_0} - \frac{T}{T_0} \ln\frac{T}{T_0} \right]$$
+$$
+V_{OUT}(T) = V_{G0} + (\gamma - \alpha) V_{T0} \left[ \frac{T}{T_0} - \frac{T}{T_0} \ln\frac{T}{T_0} \right]
+$$
 
 零 $TCF$ 时：$V_{OUT} \approx V_{G0} + (\gamma - \alpha) V_{T0}$
 
@@ -96,7 +108,9 @@ $$V_{OUT}(T) = V_{G0} + (\gamma - \alpha) V_{T0} \left[ \frac{T}{T_0} - \frac{T}
 
 ### CMOS 带隙基准的失调影响
 
-$$V_{OUT(referred\_offset)} = \left(1 + \frac{R_2}{R_3}\right) V_{OS}$$
+$$
+V_{OUT(referred\_offset)} = \left(1 + \frac{R_2}{R_3}\right) V_{OS}
+$$
 
 输入失调电压被放大了 $(1 + R_2/R_3)$ 倍！这是 CMOS 带隙基准中 $TCF$ 不准的主要来源。
 
@@ -141,7 +155,9 @@ graph TD
 - **电平移位法**（图 4.11）：用源随器将栅极电压降低一个阈值。
 - **Sooch 电路**（图 4.12）：用深三极管区 $M_5$ 产生精确 $V_{ov}$ 压降，使 $V_{DS1} = V_{ov}$。$M_4$ 用于均衡 $M_3$ 和 $M_1$ 的漏源电压，消除系统增益误差。
 
-$$V_\text{OUT(min)} = 2V_{ov} \quad (\text{无阈值损失！})$$
+$$
+V_\text{OUT(min)} = 2V_{ov} \quad (\text{无阈值损失！})
+$$
 
 #### (4) Wilson 电流镜
 
@@ -162,7 +178,9 @@ $$V_\text{OUT(min)} = 2V_{ov} \quad (\text{无阈值损失！})$$
 > [!important] 差分转单端转换
 > 有源负载差分对自动完成差分输入到单端输出的转换，且 CMRR 远高于单端输出的电阻负载差分对。
 
-$$CMRR_{active} \approx CMRR_{passive} \times \frac{2}{\epsilon_d + \epsilon_m}$$
+$$
+CMRR_{active} \approx CMRR_{passive} \times \frac{2}{\epsilon_d + \epsilon_m}
+$$
 
 其中 $\epsilon_d$ 为差分对增益误差，$\epsilon_m$ 为电流镜增益误差。
 

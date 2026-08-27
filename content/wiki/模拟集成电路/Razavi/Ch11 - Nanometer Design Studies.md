@@ -42,7 +42,9 @@ tags:
 
 随着 $V_{GS}$ 增大，垂直电场增强，载流子迁移率 $\mu$ 下降（Fig. 11.5）。若近似为 $\mu = \mu_0 / [1 + \theta(V_{GS}-V_{TH})]$，则
 
-$$g_m = \frac{1}{2}\mu_0 C_{ox}\frac{W}{L} \cdot \frac{2(V_{GS}-V_{TH}) + \theta(V_{GS}-V_{TH})^2}{[1+\theta(V_{GS}-V_{TH})]^2}$$
+$$
+g_m = \frac{1}{2}\mu_0 C_{ox}\frac{W}{L} \cdot \frac{2(V_{GS}-V_{TH}) + \theta(V_{GS}-V_{TH})^2}{[1+\theta(V_{GS}-V_{TH})]^2}
+$$
 
 当 $V_{GS}-V_{TH} \gg 2/\theta$ 时，$g_m$ 趋向饱和常数，不再增长（Fig. 11.6）。
 
@@ -56,7 +58,9 @@ $$
 
 对该参考器件做一次完整的 $I_D$-$V_{DS}$ 和 $g_m$-$V_{GS}$ 仿真，之后的晶体管设计只需**根据需求线性缩放** $W$ 和 $I_D$：
 
-$$\text{缩放因子 } K = \frac{I_{D,target}}{I_{D,REF}}$$
+$$
+\text{缩放因子 } K = \frac{I_{D,target}}{I_{D,REF}}
+$$
 
 缩放后：$W = K \cdot W_{REF},\quad g_m = K \cdot g_{m,REF}$
 

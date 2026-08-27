@@ -32,11 +32,15 @@ updated: 2026-08-02
 
 对于只有一个极点 $p_1$ 的基本放大器：
 
-$$a(s) = \frac{a_0}{1 - \frac{s}{p_1}}$$
+$$
+a(s) = \frac{a_0}{1 - \frac{s}{p_1}}
+$$
 
 接入纯电阻反馈 $f$ 后，闭环增益为：
 
-$$A(s) = \frac{a(s)}{1 + a(s)f} = \frac{A_0}{1 - \frac{s}{(1 + T_0)|p_1|}}$$
+$$
+A(s) = \frac{a(s)}{1 + a(s)f} = \frac{A_0}{1 - \frac{s}{(1 + T_0)|p_1|}}
+$$
 
 其中 $T_0 = a_0 f$ 为低频环路增益。
 
@@ -54,7 +58,9 @@ $$A(s) = \frac{a(s)}{1 + a(s)f} = \frac{A_0}{1 - \frac{s}{(1 + T_0)|p_1|}}$$
 
 考虑三极点基本放大器：
 
-$$a(s) = \frac{a_0}{\left(1 - \frac{s}{p_1}\right)\left(1 - \frac{s}{p_2}\right)\left(1 - \frac{s}{p_3}\right)}$$
+$$
+a(s) = \frac{a_0}{\left(1 - \frac{s}{p_1}\right)\left(1 - \frac{s}{p_2}\right)\left(1 - \frac{s}{p_3}\right)}
+$$
 
 Bode 图上，随频率升高：
 - 幅频曲线依次经历 −6 dB/oct → −12 dB/oct → −18 dB/oct
@@ -96,7 +102,9 @@ Bode 图上，随频率升高：
 
 ### 闭环增益与环路增益的关系
 
-$$A(j\omega) = \frac{a(j\omega)}{1 + T(j\omega)}$$
+$$
+A(j\omega) = \frac{a(j\omega)}{1 + T(j\omega)}
+$$
 
 在 Bode 图上，$20\log_{10}|A(j\omega)|$ 的低频段由所需闭环增益水平线决定，在高频段（$|T| \to 0$）退化为 $20\log_{10}|a(j\omega)|$。
 
@@ -128,7 +136,9 @@ Bode 图中 $20\log_{10}|a(j\omega)|$ 与 $20\log_{10}(1/f)$ 之间的**垂直�
 
 将补偿电容 $C$ 跨接在增益级的输入和输出之间。利用 Miller 效应：
 
-$$C_{\text{eff}} \approx C \cdot (1 + g_m R_L)$$
+$$
+C_{\text{eff}} \approx C \cdot (1 + g_m R_L)
+$$
 
 等效输入电容被放大 $(1 + A_v)$ 倍，小电容（~30 pF）即可产生足够低的极点频率，可**片上集成**。
 
@@ -136,9 +146,13 @@ $$C_{\text{eff}} \approx C \cdot (1 + g_m R_L)$$
 
 分析两极点等效电路（图 9.18）得出（假设 $g_m R_1, g_m R_2 \gg 1$，且极点实且分离）：
 
-$$p_1 \simeq -\frac{1}{g_m R_1 R_2 C}$$
+$$
+p_1 \simeq -\frac{1}{g_m R_1 R_2 C}
+$$
 
-$$p_2 \simeq -\frac{g_m C}{C_1 C_2 + C(C_1 + C_2)}$$
+$$
+p_2 \simeq -\frac{g_m C}{C_1 C_2 + C(C_1 + C_2)}
+$$
 
 > [!tip] Pole Splitting 的本质
 > 增大 $C$ 时：
@@ -206,7 +220,9 @@ Telescopic cascode 和 folded cascode 等单级运放只有输出节点设置主
 ### 三极点放大器根轨迹（9.5.1）
 
 三个相同极点 $p_1$ 的放大器：
-$$a(s) = \frac{a_0}{(1 - s/p_1)^3}$$
+$$
+a(s) = \frac{a_0}{(1 - s/p_1)^3}
+$$
 
 根轨迹显示（图 9.35）：$T_0 = 8$ 时复数极点进入右半平面。即：三个相同极点的放大器在 $T_0 > 8$ 时振荡——条件相当苛刻，凸显补偿的必要性。
 
@@ -227,7 +243,9 @@ $$a(s) = \frac{a_0}{(1 - s/p_1)^3}$$
 > 大信号阶跃下，运放输入差分对进入**限幅非线性**（$|V_{id}| > 3V_T$ 或 $\sqrt{2}V_{ov}$），差分对输出电流被尾电流 $2I_1$ 所限。补偿电容以恒定电流充电，输出电压呈线性斜坡而非指数上升。
 
 基本关系：
-$$\text{SR} = \frac{dV_o}{dt}\bigg|_{\max} = \frac{I_{xm}}{C}$$
+$$
+\text{SR} = \frac{dV_o}{dt}\bigg|_{\max} = \frac{I_{xm}}{C}
+$$
 
 其中 $I_{xm}$ 为第一级可提供的最大充放电电流（对简单差分对 $I_{xm} = 2I_1$）。
 
@@ -235,7 +253,9 @@ $$\text{SR} = \frac{dV_o}{dt}\bigg|_{\max} = \frac{I_{xm}}{C}$$
 
 对于两极点 Miller 补偿运放，小信号单位增益频率 $\omega_u$ 和大信号摆率 SR 的关联：
 
-$$\text{SR} = \frac{I_{xm}}{g_{mI}} \cdot \omega_2$$
+$$
+\text{SR} = \frac{I_{xm}}{g_{mI}} \cdot \omega_2
+$$
 
 其中 $\omega_2$ 为次极点频率。**提高 $\text{SR}$ 的关键**：增大 $I_{xm}/g_{mI}$ 比值。
 
@@ -248,7 +268,9 @@ $$\text{SR} = \frac{I_{xm}}{g_{mI}} \cdot \omega_2$$
 
 ### 满功率带宽
 
-$$\omega_{\text{FP}} = \frac{\text{SR}}{\hat{V}_i}$$
+$$
+\omega_{\text{FP}} = \frac{\text{SR}}{\hat{V}_i}
+$$
 
 当正弦信号的 $\omega \hat{V}_i$ 超过摆率极限时，输出波形出现摆率限制失真（图 9.57b）。
 

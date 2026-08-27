@@ -38,13 +38,19 @@ updated: 2026-08-02
 
 **解决方案**：引入电阻 $R_S$ 作为第二个约束（Fig. 12.3(a)）：
 
-$$V_{GS1} = V_{GS2} + I_{D2} R_S$$
+$$
+V_{GS1} = V_{GS2} + I_{D2} R_S
+$$
 
 忽略体效应后得到：
 
-$$\sqrt{\frac{2 I_{out}}{\mu_n C_{ox}(W/L)_N}} \left(1 - \frac{1}{\sqrt{K}}\right) = I_{out} R_S$$
+$$
+\sqrt{\frac{2 I_{out}}{\mu_n C_{ox}(W/L)_N}} \left(1 - \frac{1}{\sqrt{K}}\right) = I_{out} R_S
+$$
 
-$$I_{out} = \frac{2}{\mu_n C_{ox}(W/L)_N} \cdot \frac{1}{R_S^2} \cdot \left(1 - \frac{1}{\sqrt{K}}\right)^2$$
+$$
+I_{out} = \frac{2}{\mu_n C_{ox}(W/L)_N} \cdot \frac{1}{R_S^2} \cdot \left(1 - \frac{1}{\sqrt{K}}\right)^2
+$$
 
 电流与 $V_{DD}$ 无关，但仍依赖于工艺和温度。
 
@@ -67,7 +73,9 @@ $$I_{out} = \frac{2}{\mu_n C_{ox}(W/L)_N} \cdot \frac{1}{R_S^2} \cdot \left(1 - 
 
 带隙基准的核心思想是：将**正温度系数**和**负温度系数**的两个量，按适当权重相加，得到零温度系数。
 
-$$V_{REF} = \alpha_1 V_1 + \alpha_2 V_2$$
+$$
+V_{REF} = \alpha_1 V_1 + \alpha_2 V_2
+$$
 
 满足：$\alpha_1 \frac{\partial V_1}{\partial T} + \alpha_2 \frac{\partial V_2}{\partial T} = 0$
 
@@ -75,15 +83,21 @@ $$V_{REF} = \alpha_1 V_1 + \alpha_2 V_2$$
 
 对于一个集电极电流恒定的 BJT：
 
-$$V_{BE} = V_T \ln\left(\frac{I_C}{I_S}\right)$$
+$$
+V_{BE} = V_T \ln\left(\frac{I_C}{I_S}\right)
+$$
 
 其中 $V_T = kT/q$，$I_S \propto \mu k T n_i^2$。利用 $\mu \propto \mu_0 T^m$（$m \approx -3/2$）和 $n_i^2 \propto T^3 \exp[-E_g/(kT)]$（$E_g \approx 1.12 \text{ eV}$），推导得：
 
-$$\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (4+m)V_T - E_g/q}{T}$$
+$$
+\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (4+m)V_T - E_g/q}{T}
+$$
 
 >[!important] 关键数值
 >在 $T = 300\text{K}$、$V_{BE} \approx 750\text{ mV}$ 时：
->$$\frac{\partial V_{BE}}{\partial T} \approx -1.5 \text{ mV/K}$$
+>$$
+>\frac{\partial V_{BE}}{\partial T} \approx -1.5 \text{ mV/K}
+>$$
 >
 >旧工艺（电流密度低，$V_{BE} \approx 700\text{ mV}$）：约 $-1.9\text{ mV/K}$
 >现代工艺（电流密度高，$V_{BE} \approx 800\text{ mV}$）：约 $-1.5\text{ mV/K}$
@@ -92,9 +106,13 @@ $$\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (4+m)V_T - E_g/q}{T}$$
 
 两只 BJT 工作在不同电流密度下时，**$V_{BE}$ 之差**与绝对温度成正比：
 
-$$\Delta V_{BE} = V_{BE1} - V_{BE2} = V_T \ln\left(\frac{n I_0}{I_S} \cdot \frac{I_S}{I_0}\right) = V_T \ln n$$
+$$
+\Delta V_{BE} = V_{BE1} - V_{BE2} = V_T \ln\left(\frac{n I_0}{I_S} \cdot \frac{I_S}{I_0}\right) = V_T \ln n
+$$
 
-$$\frac{\partial \Delta V_{BE}}{\partial T} = \frac{k}{q} \ln n \approx (0.087 \text{ mV/K}) \times \ln n$$
+$$
+\frac{\partial \Delta V_{BE}}{\partial T} = \frac{k}{q} \ln n \approx (0.087 \text{ mV/K}) \times \ln n
+$$
 
 >[!tip] PTAT 本质
 >此温度系数与温度本身无关，也**与集电极电流的温度行为无关**——这是 $\Delta V_{BE}$ 作为 PTAT 来源的根本优势。
@@ -105,13 +123,17 @@ $$\frac{\partial \Delta V_{BE}}{\partial T} = \frac{k}{q} \ln n \approx (0.087 \
 
 将正负 TC 相加得到零 TC 的条件：
 
-$$V_{REF} = V_{BE} + \alpha_2 V_T \ln n$$
+$$
+V_{REF} = V_{BE} + \alpha_2 V_T \ln n
+$$
 
 令 $\alpha_2 \ln n \approx 17.2$，使得 $(17.2)(0.087\text{ mV/K}) \approx 1.5\text{ mV/K}$，恰好抵消 $\partial V_{BE}/\partial T$。
 
 经典实现（Fig. 12.9, Kuijk 1973）：
 
-$$V_{out} = V_{BE2} + \frac{V_T \ln n}{R_3} (R_3 + R_2) = V_{BE2} + V_T \ln n \left(1 + \frac{R_2}{R_3}\right)$$
+$$
+V_{out} = V_{BE2} + \frac{V_T \ln n}{R_3} (R_3 + R_2) = V_{BE2} + V_T \ln n \left(1 + \frac{R_2}{R_3}\right)
+$$
 
 零 TC 条件：$(1 + R_2/R_3) \ln n \approx 17.2$
 
@@ -122,7 +144,9 @@ $$V_{out} = V_{BE2} + \frac{V_T \ln n}{R_3} (R_3 + R_2) = V_{BE2} + V_T \ln n \l
 
 将零 TC 条件代入，可得：
 
-$$V_{REF} = \frac{E_g}{q} + (4+m)V_T$$
+$$
+V_{REF} = \frac{E_g}{q} + (4+m)V_T
+$$
 
 当 $T \to 0$ 时，$V_{REF} \to E_g/q$，即硅的带隙电压（~1.12 V）。这就是"bandgap reference"名称的由来——输出电压在零温漂条件下接近硅的带隙电压。这也解释了为什么传统带隙基准输出约为 **1.25 V**。
 
@@ -130,7 +154,9 @@ $$V_{REF} = \frac{E_g}{q} + (4+m)V_T$$
 
 在 Fig. 12.9 中，BJT 的集电极电流其实是 **PTAT** 的（$\propto V_T/R_3$），而非恒定。重新推导：
 
-$$\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (3+m)V_T - E_g/q}{T}$$
+$$
+\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (3+m)V_T - E_g/q}{T}
+$$
 
 与恒流情况相比（分母 $4+m$ 变为 $3+m$），TC 略小于 $-1.5\text{ mV/K}$。实际设计依赖精确仿真。
 
@@ -166,7 +192,9 @@ $$\frac{\partial V_{BE}}{\partial T} = \frac{V_{BE} - (3+m)V_T - E_g/q}{T}$$
 
 运放输入失调电压 $V_{OS}$ 被**放大**到输出：
 
-$$V_{out} = V_{BE2} + \left(1 + \frac{R_2}{R_3}\right)(V_T \ln n - V_{OS})$$
+$$
+V_{out} = V_{BE2} + \left(1 + \frac{R_2}{R_3}\right)(V_T \ln n - V_{OS})
+$$
 
 $V_{OS}$ 被放大了 $1 + R_2/R_3$ 倍（典型约 5 倍），这是带隙基准误差的**主要来源**。更严重的是，$V_{OS}$ 本身也随温度变化，进一步恶化温度系数。
 
@@ -191,9 +219,13 @@ $V_{OS}$ 被放大了 $1 + R_2/R_3$ 倍（典型约 5 倍），这是带隙基�
 
 Fig. 12.9 中运放同时向两个输入端反馈——必须确保**整体为负反馈**：
 
-$$\beta_N = \frac{1/g_{mQ1} + R_3}{1/g_{mQ1} + R_3 + R_1} \quad \text{(到反相端)}$$
+$$
+\beta_N = \frac{1/g_{mQ1} + R_3}{1/g_{mQ1} + R_3 + R_1} \quad \text{(到反相端)}
+$$
 
-$$\beta_P = \frac{1/g_{mQ2}}{1/g_{mQ2} + R_2} \quad \text{(到同相端)}$$
+$$
+\beta_P = \frac{1/g_{mQ2}}{1/g_{mQ2} + R_2} \quad \text{(到同相端)}
+$$
 
 要求 $\beta_P < \beta_N$，且最好 $\beta_N \approx 2\beta_P$，使瞬态响应在重容性负载下保持良好。
 
@@ -206,15 +238,21 @@ $$\beta_P = \frac{1/g_{mQ2}}{1/g_{mQ2} + R_2} \quad \text{(到同相端)}$$
 
 将 PTAT 电流流过电阻再叠加 $V_{BE}$，即可生成温度无关电压（Fig. 12.20）：
 
-$$V_{out} = V_{BE3} + \frac{R_2}{R_1} V_T \ln n$$
+$$
+V_{out} = V_{BE3} + \frac{R_2}{R_1} V_T \ln n
+$$
 
 ### 7. 恒定 $G_m$ 偏置（Sec. 12.5）
 
 从 Fig. 12.3 的自偏置电路出发：
 
-$$I_{out} = \frac{2}{\mu_n C_{ox}(W/L)_N} \cdot \frac{1}{R_S^2} \cdot \left(1 - \frac{1}{\sqrt{K}}\right)^2$$
+$$
+I_{out} = \frac{2}{\mu_n C_{ox}(W/L)_N} \cdot \frac{1}{R_S^2} \cdot \left(1 - \frac{1}{\sqrt{K}}\right)^2
+$$
 
-$$g_{m1} = \frac{2}{R_S} \left(1 - \frac{1}{\sqrt{K}}\right)$$
+$$
+g_{m1} = \frac{2}{R_S} \left(1 - \frac{1}{\sqrt{K}}\right)
+$$
 
 $g_{m1}$ 与电源电压和 MOS 参数无关！但 $R_S$ 仍有温度和工艺变化。
 
@@ -236,11 +274,15 @@ $g_{m1}$ 与电源电压和 MOS 参数无关！但 $R_S$ 仍有温度和工艺�
 - $I_{C2} = V_T \ln n / R_1$（PTAT 电流）
 - $I_{R2} = |V_{BE1}| / R_2$（负 TC 电流）
 
-$$|I_{D4}| = \frac{V_T \ln n}{R_1} + \frac{|V_{BE1}|}{R_2}$$
+$$
+|I_{D4}| = \frac{V_T \ln n}{R_1} + \frac{|V_{BE1}|}{R_2}
+$$
 
 选择 $\frac{R_2}{R_1} \ln n \approx 17.2$，$I_{D4}$ 即具有零 TC。将此电流复制到 $M_5$ 并流过 $R_4$：
 
-$$V_{BG} = \frac{R_4}{R_2} \left(|V_{BE1}| + \frac{R_2}{R_1} V_T \ln n\right)$$
+$$
+V_{BG} = \frac{R_4}{R_2} \left(|V_{BE1}| + \frac{R_2}{R_1} V_T \ln n\right)
+$$
 
 通过调节 $R_4$，可在保持零 TC 的同时间接获得任意低于 $1.25\text{ V}$ 的输出电压。
 
@@ -249,11 +291,15 @@ $$V_{BG} = \frac{R_4}{R_2} \left(|V_{BE1}| + \frac{R_2}{R_1} V_T \ln n\right)$$
 
 ### 8.2 Banba 电路中的失调影响
 
-$$V_{BG} = \frac{R_4}{R_1 \parallel R_2} \left(\frac{R_2}{R_1} V_T \ln n + |V_{BE1}| - V_{OS}\right)$$
+$$
+V_{BG} = \frac{R_4}{R_1 \parallel R_2} \left(\frac{R_2}{R_1} V_T \ln n + |V_{BE1}| - V_{OS}\right)
+$$
 
 $V_{OS}$ 被放大了 $R_4/(R_1 \parallel R_2)$ 倍。更直观地：
 
-$$V_{BG} \approx \frac{R_4}{R_2} \left(|V_{BE2}| + \frac{R_2}{R_1} V_T \ln n\right) - \frac{R_4}{R_1} V_{OS}$$
+$$
+V_{BG} \approx \frac{R_4}{R_2} \left(|V_{BE2}| + \frac{R_2}{R_1} V_T \ln n\right) - \frac{R_4}{R_1} V_{OS}
+$$
 
 **最小化 $V_{OS}$ 的唯一方法：最大化 $n$。**
 
@@ -261,7 +307,9 @@ $$V_{BG} \approx \frac{R_4}{R_2} \left(|V_{BE2}| + \frac{R_2}{R_1} V_T \ln n\rig
 
 在 Fig. 12.20 的输出端并联 $R_3$ 到地：
 
-$$V_{out} = \frac{R_3}{R_2 + R_3} \left(V_{BE3} + \frac{R_2}{R_1} V_T \ln n\right)$$
+$$
+V_{out} = \frac{R_3}{R_2 + R_3} \left(V_{BE3} + \frac{R_2}{R_1} V_T \ln n\right)
+$$
 
 标准带隙电压被电阻分压器 $R_3/(R_2+R_3)$ 等比例缩小。
 
@@ -282,7 +330,9 @@ OTA 同样需要启动电路——$V_{DD} < 1\text{ V}$ 时，可用二极管连
 
 带隙基准的输出阻抗随频率急剧变化（Fig. 12.27）：
 
-$$|Z_{out}(\omega)| = \begin{cases} \frac{R_{out}}{1+g_{mP}R_1A_0}, & \omega < \omega_0 \\ R_{out}/2, & \omega = (1+g_{mP}R_1A_0)\omega_0 \end{cases}$$
+$$
+|Z_{out}(\omega)| = \begin{cases} \frac{R_{out}}{1+g_{mP}R_1A_0}, & \omega < \omega_0 \\ R_{out}/2, & \omega = (1+g_{mP}R_1A_0)\omega_0 \end{cases}
+$$
 
 低频时很好，但**高频时输出阻抗显著升高**，外部电路扰动可通过参考线产生串扰。
 
@@ -294,7 +344,9 @@ $$|Z_{out}(\omega)| = \begin{cases} \frac{R_{out}}{1+g_{mP}R_1A_0}, & \omega < \
 
 带隙基准的噪声直接耦合到所有依赖它的电路：
 
-$$V_{n,out} \approx V_{n,op}$$
+$$
+V_{n,out} \approx V_{n,op}
+$$
 
 运放的输入噪声几乎 **直接出现在输出端**。即使加大的输出旁路电容，也无法抑制低频 $1/f$ 噪声。
 

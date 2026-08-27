@@ -100,18 +100,28 @@ Razavi 提出两种等价但洞察不同的视角：
 
 ### 环形振荡器周期公式（大信号）
 
-$$T_{osc} = 2N \cdot T_D$$
-$$f_{osc} = \frac{1}{2N T_D}$$
+$$
+T_{osc} = 2N \cdot T_D
+$$
+$$
+f_{osc} = \frac{1}{2N T_D}
+$$
 
 其中 $N$ 为级数（单端必须奇数），$T_D$ 为每级大信号延迟。
 
 ### LC 谐振腔基础
 
-$$Z_{eq} = L_P s \,\|\, \frac{1}{C_P s} \,\|\, R_P$$
+$$
+Z_{eq} = L_P s \,\|\, \frac{1}{C_P s} \,\|\, R_P
+$$
 
 **串并联转换**：串联 $(L_S, R_S)$ ↔ 并联 $(L_P, R_P)$：
-$$L_P = L_S\left(1 + \frac{1}{Q^2}\right) \approx L_S$$
-$$R_P = R_S(1 + Q^2) \approx Q^2 R_S \quad (\text{当 } Q > 3)$$
+$$
+L_P = L_S\left(1 + \frac{1}{Q^2}\right) \approx L_S
+$$
+$$
+R_P = R_S(1 + Q^2) \approx Q^2 R_S \quad (\text{当 } Q > 3)
+$$
 
 其中 $Q = L_S\omega / R_S$。
 
@@ -125,26 +135,40 @@ $$R_P = R_S(1 + Q^2) \approx Q^2 R_S \quad (\text{当 } Q > 3)$$
 ### VCO 数学模型 (15.5)
 
 **基本定义**：
-$$\omega_{out} = \omega_0 + K_{VCO} \cdot V_{cont}$$
+$$
+\omega_{out} = \omega_0 + K_{VCO} \cdot V_{cont}
+$$
 
 **相位-频率关系**：
-$$\omega = \frac{d\phi}{dt}$$
-$$\phi(t) = \int \omega_{out}\,dt = \omega_0 t + K_{VCO}\int V_{cont}\,dt + \phi_0$$
+$$
+\omega = \frac{d\phi}{dt}
+$$
+$$
+\phi(t) = \int \omega_{out}\,dt = \omega_0 t + K_{VCO}\int V_{cont}\,dt + \phi_0
+$$
 
 **过剩相位 (Excess Phase)**：
-$$\phi_{ex}(t) = K_{VCO} \int V_{cont}\,dt$$
+$$
+\phi_{ex}(t) = K_{VCO} \int V_{cont}\,dt
+$$
 
 在 PLL 分析中，VCO 被建模为**理想积分器**：
-$$\frac{\Phi_{ex}(s)}{V_{cont}(s)} = \frac{K_{VCO}}{s}$$
+$$
+\frac{\Phi_{ex}(s)}{V_{cont}(s)} = \frac{K_{VCO}}{s}
+$$
 
 > [!danger] 常见错误
 > 不能把 VCO 输出写成 $V_m\cos[(\omega_0 + K_{VCO}V_{cont})t]$！正确的相位等于频率对时间的**积分**。
 > 只有 $V_{cont}$ 为常数时，相位才是 $\omega t$ 的形式。否则：
-> $$\frac{d}{dt}[(\omega_0 + K_{VCO}V_{cont})t] = \omega_0 + K_{VCO}V_{cont} + K_{VCO}t\frac{dV_{cont}}{dt}$$
+> $$
+> \frac{d}{dt}[(\omega_0 + K_{VCO}V_{cont})t] = \omega_0 + K_{VCO}V_{cont} + K_{VCO}t\frac{dV_{cont}}{dt}
+> $$
 > 多出了 $K_{VCO}t\cdot dV_{cont}/dt$ 项，频率退化错误。
 
 **小信号正弦调制**：当 $V_{cont} = V_m\cos\omega_m t$ 且 $K_{VCO}V_m/\omega_m \ll 1$ rad 时：
-$$V_{out}(t) \approx V_0\cos\omega_0 t - \frac{V_0 K_{VCO}V_m}{2\omega_m}\big[\cos(\omega_0-\omega_m)t - \cos(\omega_0+\omega_m)t\big]$$
+$$
+V_{out}(t) \approx V_0\cos\omega_0 t - \frac{V_0 K_{VCO}V_m}{2\omega_m}\big[\cos(\omega_0-\omega_m)t - \cos(\omega_0+\omega_m)t\big]
+$$
 产生 $\omega_0 \pm \omega_m$ 的**边带 (sidebands)**。这是 PLL 中 VCO 相位噪声的基本来源。
 
 ### VCO 关键性能参数 (15.4)
@@ -240,7 +264,9 @@ $$V_{out}(t) \approx V_0\cos\omega_0 t - \frac{V_0 K_{VCO}V_m}{2\omega_m}\big[\c
 **核心思路**：$f_{osc} = 1/(2\pi\sqrt{LC})$，只能变电感或电容。单片电感难调 → **变电容（变容管 varactor）**。
 
 **pn 结变容管**：
-$$C_j = \frac{C_0}{\left(1 + \frac{V_R}{\phi_B}\right)^m}$$
+$$
+C_j = \frac{C_0}{\left(1 + \frac{V_R}{\phi_B}\right)^m}
+$$
 - 反向偏压 $V_R$ 范围受电源电压和输出摆幅限制
 - 典型调谐范围 ~27%（$V_R$: 0→2V，$m=0.35$）
 - 固定寄生电容（n 阱到衬底、晶体管寄生、电感寄生）进一步压缩调谐范围

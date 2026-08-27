@@ -40,21 +40,31 @@ tags:
 差模/共模半电路是分析全差分电路的基本工具，对称轴在差模下为 ac ground，在共模下为开路。
 
 **DM 开环增益：**
-$$v_{od}=a_{dm}v_{id}+a_{cm-dm}v_{ic}$$
+$$
+v_{od}=a_{dm}v_{id}+a_{cm-dm}v_{ic}
+$$
 
 **CM 开环增益（无 CMFB）：**
-$$v_{oc}=a_{cm}v_{ic}+a_{dm-cm}v_{id}$$
+$$
+v_{oc}=a_{cm}v_{ic}+a_{dm-cm}v_{id}
+$$
 
 **加入 CMC 输入后的 CM 输出：**
-$$v_{oc}=a_{cm}v_{ic}+a_{dm-cm}v_{id}+a_{cmc}v_{cmc}$$
+$$
+v_{oc}=a_{cm}v_{ic}+a_{dm-cm}v_{id}+a_{cmc}v_{cmc}
+$$
 
 **CMFB 闭合后的等效 CM 增益：**
-$$a'_{cm}=\frac{a_{cm}}{1+a_{cms}(-a_{cmc})}$$
+$$
+a'_{cm}=\frac{a_{cm}}{1+a_{cms}(-a_{cmc})}
+$$
 
 > 若环路增益 $|a_{cms}(-a_{cmc})|\gg 1$，则 $|a'_{cm}|\ll|a_{cm}|$，CMFB 可将 CM 增益压制两个数量级以上。
 
 **CMFB 闭环直流精度：**
-$$A_{CMFB}=\frac{v_{oc}}{v_{CM}}=\frac{a_{cms}(-a_{cmc})}{1+a_{cms}(-a_{cmc})}$$
+$$
+A_{CMFB}=\frac{v_{oc}}{v_{CM}}=\frac{a_{cms}(-a_{cmc})}{1+a_{cms}(-a_{cmc})}
+$$
 
 > 高环路增益使 $V_{oc}$ 精确跟踪 $V_{CM}$。
 
@@ -132,10 +142,14 @@ Vi1 → M1 M2 ← Vi2
 ### CMFB 环路稳定性
 
 CMFB 环路的主导极点：
-$$\omega_{p1c}=\frac{1}{(R_o(\text{down})\parallel r_{o3})\,C_{Lc}}$$
+$$
+\omega_{p1c}=\frac{1}{(R_o(\text{down})\parallel r_{o3})\,C_{Lc}}
+$$
 
 高频下：
-$$|a_{cmc}(j\omega)|\approx \frac{g_{m5h}}{\omega C_{Lc}},\quad\omega\gg|p_{1c}|$$
+$$
+|a_{cmc}(j\omega)|\approx \frac{g_{m5h}}{\omega C_{Lc}},\quad\omega\gg|p_{1c}|
+$$
 
 - CMFB 环路通常比 DM 环路有更多高频极点（CM-sense 放大器极点、源极节点极点）
 - 若不想增加 $C_{Lc}$（会过补偿 DM 环路），可拆分 tail 管降低 $g_{m5h}$（Fig. 12.15）
@@ -148,9 +162,13 @@ $$|a_{cmc}(j\omega)|\approx \frac{g_{m5h}}{\omega C_{Lc}},\quad\omega\gg|p_{1c}|
 
 **闭环交叉增益（平衡反馈网络 + 非平衡运放）：**
 
-$$A_{cm-dm}\approx\frac{a_{cm-dm}}{1+T_{dm}}+\frac{a'_{cm}\cdot a_{cms}\cdot a_{cmc-dm}}{1+T_{dm}}$$
+$$
+A_{cm-dm}\approx\frac{a_{cm-dm}}{1+T_{dm}}+\frac{a'_{cm}\cdot a_{cms}\cdot a_{cmc-dm}}{1+T_{dm}}
+$$
 
-$$A_{dm-cm}\approx\frac{a_{dm-cm}}{1+T_{dm}}+\frac{a_{adm-cms}\cdot a_{cmc}}{1+T_{cmfb}}$$
+$$
+A_{dm-cm}\approx\frac{a_{dm-cm}}{1+T_{dm}}+\frac{a_{adm-cms}\cdot a_{cmc}}{1+T_{cmfb}}
+$$
 
 关键结论：
 - 增大 $|T_{dm}|$ 可同时压制 $A_{cm-dm}$ 和 $A_{dm-cm}$

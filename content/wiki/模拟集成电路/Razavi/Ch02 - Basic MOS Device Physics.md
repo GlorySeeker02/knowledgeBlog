@@ -56,18 +56,28 @@ tags:
 ### I/V 特性（平方律模型，长沟道）
 
 **NFET 三极管区**：
-$$I_D = \mu_n C_{ox} \frac{W}{L}\left[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2\right]$$
+$$
+I_D = \mu_n C_{ox} \frac{W}{L}\left[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2\right]
+$$
 
 **NFET 饱和区**（$V_{DS} \geq V_{GS} - V_{TH}$）：
-$$I_D = \frac{1}{2}\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{TH})^2(1 + \lambda V_{DS})$$
+$$
+I_D = \frac{1}{2}\mu_n C_{ox} \frac{W}{L}(V_{GS} - V_{TH})^2(1 + \lambda V_{DS})
+$$
 
 **PFET**：将 $\mu_n \to \mu_p$，所有电压取负号，$I_D$ 约定从漏极流向源极。
 
 ### 跨导 $g_m$（饱和区）——三种等价形式
 
-$$g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TH}) \quad \text{(正比于过驱动})$$
-$$g_m = \sqrt{2\mu_n C_{ox}\frac{W}{L} I_D} \quad \text{(给定电流，增大W/L提高} g_m\text{)}$$
-$$g_m = \frac{2I_D}{V_{GS} - V_{TH}} \quad \text{(给定电流，减小过驱动提高} g_m\text{)}$$
+$$
+g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TH}) \quad \text{(正比于过驱动})
+$$
+$$
+g_m = \sqrt{2\mu_n C_{ox}\frac{W}{L} I_D} \quad \text{(给定电流，增大W/L提高} g_m\text{)}
+$$
+$$
+g_m = \frac{2I_D}{V_{GS} - V_{TH}} \quad \text{(给定电流，减小过驱动提高} g_m\text{)}
+$$
 
 > **亚阈值跨导**：$g_m = I_D/(\xi V_T)$，永远小于同电流下 BJT 的 $I_C/V_T$。
 
@@ -75,14 +85,18 @@ $$g_m = \frac{2I_D}{V_{GS} - V_{TH}} \quad \text{(给定电流，减小过驱动
 
 ### 输出电阻
 
-$$r_O = \frac{\partial V_{DS}}{\partial I_D} \approx \frac{1}{\lambda I_D}$$
+$$
+r_O = \frac{\partial V_{DS}}{\partial I_D} \approx \frac{1}{\lambda I_D}
+$$
 
 - **本征增益** $g_m r_O \propto 1/\sqrt{I_D}$，长沟道模型 $g_m r_O$ 很大但实际短沟道远低于理论值（第 17 章详述）。
 - 沟道长度翻倍 → 斜率 ÷4（给定 $V_{GS} - V_{TH}$）。
 
 ### 体跨导
 
-$$g_{mb} = \frac{g_m \gamma}{2\sqrt{2\phi_F + V_{SB}}} = \eta g_m$$
+$$
+g_{mb} = \frac{g_m \gamma}{2\sqrt{2\phi_F + V_{SB}}} = \eta g_m
+$$
 
 $\eta \approx 0.25$（典型值），$V_{SB}$ 增大 → $g_{mb}$ 减小。
 

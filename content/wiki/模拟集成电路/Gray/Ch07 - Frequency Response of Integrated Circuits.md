@@ -27,7 +27,9 @@ tags:
 
 > [!important] Miller 效应
 > 跨接在反相放大器输入-输出之间的反馈电容 $C_f$，在输入端等效为放大了 $(1+|A_v|)$ 倍的 **Miller 电容**：
-> $$C_M = C_f(1 + g_m R_L)$$
+> $$
+> C_M = C_f(1 + g_m R_L)
+> $$
 > 这是限制共源/共射放大器带宽的 **最主要因素**。
 
 - **物理本质**：输入小电压 $v_1$ 在输出端产生反相大电压 $-g_m R_L v_1$，$C_f$ 两端电压差为 $(1+g_m R_L)v_1$，需要大电流驱动，等效于输入端有一个大电容。
@@ -51,16 +53,22 @@ tags:
 ### 3. 主极点近似 (Dominant-Pole Approximation)
 
 当极点分离良好 ($|p_1| \ll |p_2|, |p_3|, \dots$)，分母系数满足：
-$$b_1 = -\sum \frac{1}{p_i} \approx -\frac{1}{p_1}$$
+$$
+b_1 = -\sum \frac{1}{p_i} \approx -\frac{1}{p_1}
+$$
 
 因此：
-$$\omega_{-3\text{dB}} \approx |p_1| \approx \frac{1}{b_1}$$
+$$
+\omega_{-3\text{dB}} \approx |p_1| \approx \frac{1}{b_1}
+$$
 
 ### 4. 零值时间常数分析 (Zero-Value Time Constant / Open-Circuit Time Constant)
 
 **最重要的手工估算工具。** 不需要完整推导传递函数，直接估算 $\omega_{-3\text{dB}}$。
 
-$$\omega_{-3\text{dB}} \approx \frac{1}{\sum \tau_{i0}}$$
+$$
+\omega_{-3\text{dB}} \approx \frac{1}{\sum \tau_{i0}}
+$$
 
 其中 $\tau_{i0} = C_i R_{i0}$，$R_{i0}$ 是将 **所有其他电容开路** 时，从 $C_i$ 两端看进去的驱动点电阻。
 
@@ -72,7 +80,9 @@ $$\omega_{-3\text{dB}} \approx \frac{1}{\sum \tau_{i0}}$$
 ### 5. 短路时间常数分析 (Short-Circuit Time Constant)
 
 **对偶方法**，用于估算 **非主极点**（最高频极点）的位置：
-$$\frac{1}{|p_2|} \approx \sum \tau_{si}$$
+$$
+\frac{1}{|p_2|} \approx \sum \tau_{si}
+$$
 
 其中 $\tau_{si}$ 是将所有其他电容 **短路** 后求出的时间常数。
 
@@ -89,7 +99,9 @@ $$\frac{1}{|p_2|} \approx \sum \tau_{si}$$
 ### 7. 带宽-上升时间关系
 
 对于单极点系统：
-$$t_r = \frac{0.35}{f_{-3\text{dB}}}$$
+$$
+t_r = \frac{0.35}{f_{-3\text{dB}}}
+$$
 
 $f_{-3\text{dB}} = 10\text{ MHz} \implies t_r = 35\text{ ns}$。
 
@@ -155,7 +167,9 @@ $f_{-3\text{dB}} = 10\text{ MHz} \implies t_r = 35\text{ ns}$。
 ### $R_{gd0}$ 通式（最重要）
 
 对于 $C_{gd}/C_\mu$ 的零值电阻，有通用公式：
-$$R_{gd0} = R_A + R_B + g_m R_A R_B$$
+$$
+R_{gd0} = R_A + R_B + g_m R_A R_B
+$$
 
 其中 $R_A$ 是从电容"输入端"看进去的电阻，$R_B$ 是从"输出端"看进去的负载电阻。该公式对 CE/CS/cascode 各级均适用。
 

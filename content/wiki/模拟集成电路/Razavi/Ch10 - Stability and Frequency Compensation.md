@@ -21,7 +21,9 @@ updated: 2026-08-02
 
 闭环传递函数 $\frac{Y}{X} = \frac{H(s)}{1+\beta H(s)}$。当 $\beta H(j\omega_1) = -1$ 时，分母为零，增益无穷大——电路在 $\omega_1$ 处振荡。这等价于：
 
-$$|\beta H(j\omega_1)| = 1 \quad\text{且}\quad \angle\beta H(j\omega_1) = -180^\circ$$
+$$
+|\beta H(j\omega_1)| = 1 \quad\text{且}\quad \angle\beta H(j\omega_1) = -180^\circ
+$$
 
 >[!important] Barkhausen 判据
 >负反馈系统在 $\omega_1$ 处振荡的条件：环路增益的**大小** = 1 且**相位** = $-180^\circ$。注意负反馈自身已贡献 $180^\circ$ 相移，因此环路总相移达到 $360^\circ$ 时反馈变为正反馈。
@@ -70,7 +72,9 @@ $$|\beta H(j\omega_1)| = 1 \quad\text{且}\quad \angle\beta H(j\omega_1) = -180^
 
 **定义**：
 
-$$\text{PM} = 180^\circ + \angle\beta H(\omega = \omega_{\text{GX}})$$
+$$
+\text{PM} = 180^\circ + \angle\beta H(\omega = \omega_{\text{GX}})
+$$
 
 即增益交越频率处，相位离 $-180^\circ$ 还有多少度。
 
@@ -129,7 +133,9 @@ $$\text{PM} = 180^\circ + \angle\beta H(\omega = \omega_{\text{GX}})$$
 
 单纯通过增大**负载电容**来压低主管极点：
 
-$$\omega'_{p,\text{out}} = \left[\text{所需降幅}\right] \times \omega_{p,\text{out}}$$
+$$
+\omega'_{p,\text{out}} = \left[\text{所需降幅}\right] \times \omega_{p,\text{out}}
+$$
 
 代价：**带宽与补偿量成反比**。提高 $R_{\text{out}}$ **不能**补偿（只提高低频增益）。
 
@@ -142,14 +148,18 @@ $$\omega'_{p,\text{out}} = \left[\text{所需降幅}\right] \times \omega_{p,\te
 > 补偿前：$\omega_{p,\text{out}} \approx 1/(R_L C_L)$
 >
 > 补偿后：
-> $$\omega_{p1} \approx \frac{1}{g_{m9} R_L R_S C_C}, \quad \omega_{p2} \approx \frac{g_{m9}}{C_E + C_L}$$
+> $$
+> \omega_{p1} \approx \frac{1}{g_{m9} R_L R_S C_C}, \quad \omega_{p2} \approx \frac{g_{m9}}{C_E + C_L}
+> $$
 
 - **主管极点** $\omega_{p1}$ 被 Miller 效应推向原点 → $C_C$ 的等效值为 $(1 + A_{v2})C_C$，用小电容实现大时间常数。
 - **输出极点** $\omega_{p2}$ 被推到更高频率 → 等效输出电阻从 $R_L$ 降到 $g_{m9}^{-1}$。
 
 **Miller 补偿电容初估**（PM $= 45^\circ$, $\beta = 1$）：
 
-$$C_C \approx \frac{g_{m1}}{g_{m9}} C_L$$
+$$
+C_C \approx \frac{g_{m1}}{g_{m9}} C_L
+$$
 
 > 更精确的公式（含 $\omega_{p2}$ 效应）：$C_C = \dfrac{g_{m1}}{\sqrt{2}\,g_{m9}} C_L$。
 
@@ -157,7 +167,9 @@ $$C_C \approx \frac{g_{m1}}{g_{m9}} C_L$$
 
 Miller 电容形成从输入到输出的**前馈路径**，产生 RHP 零点：
 
-$$\omega_z = +\frac{g_{m9}}{C_C + C_{GD9}}$$
+$$
+\omega_z = +\frac{g_{m9}}{C_C + C_{GD9}}
+$$
 
 **RHP 零点的危害**：
 - 贡献负相移（和 LHP 极点同向）→ 将 PX 推向原点
@@ -166,7 +178,9 @@ $$\omega_z = +\frac{g_{m9}}{C_C + C_{GD9}}$$
 
 **消除方法——串联电阻 $R_Z$**（Fig. 10.32）：
 
-$$\omega_z = \frac{1}{C_C(g_{m9}^{-1} - R_Z)}$$
+$$
+\omega_z = \frac{1}{C_C(g_{m9}^{-1} - R_Z)}
+$$
 
 - $R_Z = g_{m9}^{-1}$ → $\omega_z = \infty$（消除）
 - $R_Z = \frac{1}{g_{m9}}\left(1 + \frac{C_L}{C_C}\right)$ → $\omega_z = -\omega_{p2}$（移到 LHP 并与输出极点对消）
@@ -182,7 +196,9 @@ $$\omega_z = \frac{1}{C_C(g_{m9}^{-1} - R_Z)}$$
 
 用**共栅管** $M_2$ 代替串联电阻放在 $C_C$ 路径中（Fig. 10.43）：
 
-$$V_{\text{out}} \to C_C \to \text{source of } M_2 \to \text{drain of } M_2 \to \text{gate of output}\]
+$$
+V_{\text{out}} \to C_C \to \text{source of } M_2 \to \text{drain of } M_2 \to \text{gate of output}
+$$
 
 **效果**：
 - 阻断直通前馈路径 → 零点变为 **LHP 零点**
@@ -195,7 +211,9 @@ $$V_{\text{out}} \to C_C \to \text{source of } M_2 \to \text{drain of } M_2 \to 
 
 将 $C_C$ 接在 cascode 管的**源极**和输出之间（Fig. 10.46）：
 
-$$\omega_z \approx \frac{g_{m4}R_{eq}\,g_{m9}}{C_C}$$
+$$
+\omega_z \approx \frac{g_{m4}R_{eq}\,g_{m9}}{C_C}
+$$
 
 零点频率比基本 Miller 的上推约 $g_{m4}R_{eq}$ 倍。可与串联电阻法组合使用（$C_C + C_C'$）。
 

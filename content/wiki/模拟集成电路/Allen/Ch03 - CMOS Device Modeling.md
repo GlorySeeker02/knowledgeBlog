@@ -39,35 +39,49 @@ created: 2026-08-02
 
 **完整 Sah 方程（非饱和 + 饱和统一）：**
 
-$$i_D = \beta\Big[(v_{GS}-V_T)v_{DS} - \frac{v_{DS}^2}{2}\Big](1+\lambda v_{DS}),\quad v_{DS} \le v_{DS}(\text{sat})$$
+$$
+i_D = \beta\Big[(v_{GS}-V_T)v_{DS} - \frac{v_{DS}^2}{2}\Big](1+\lambda v_{DS}),\quad v_{DS} \le v_{DS}(\text{sat})
+$$
 
 其中 $\beta = K' \frac{W}{L} = \mu_0 C_{ox} \frac{W}{L}$。
 
 **饱和电压：**
 
-$$v_{DS}(\text{sat}) = v_{GS} - V_T$$
+$$
+v_{DS}(\text{sat}) = v_{GS} - V_T
+$$
 
 **饱和区电流（含沟道长度调制）：**
 
-$$i_D = \frac{\beta}{2}(v_{GS}-V_T)^2(1+\lambda v_{DS})$$
+$$
+i_D = \frac{\beta}{2}(v_{GS}-V_T)^2(1+\lambda v_{DS})
+$$
 
 **阈值电压（n 沟道）：**
 
-$$V_T = V_{T0} + \gamma\left(\sqrt{2\phi_F + v_{SB}} - \sqrt{2\phi_F}\right)$$
+$$
+V_T = V_{T0} + \gamma\left(\sqrt{2\phi_F + v_{SB}} - \sqrt{2\phi_F}\right)
+$$
 
 **过驱动电压 $V_{ON}$：**
 
-$$V_{ON} = v_{GS} - V_T = \sqrt{\frac{2i_D}{\beta}} = v_{DS}(\text{sat})$$
+$$
+V_{ON} = v_{GS} - V_T = \sqrt{\frac{2i_D}{\beta}} = v_{DS}(\text{sat})
+$$
 
 ### 速度饱和效应
 
 包含速度饱和的修正模型：
 
-$$i_D = \frac{\beta(v_{GS}-V_T)^2}{2[1 + \theta(v_{GS}-V_T)]},\quad\Big(0.5\theta(v_{GS}-V_T) < 1\Big)$$
+$$
+i_D = \frac{\beta(v_{GS}-V_T)^2}{2[1 + \theta(v_{GS}-V_T)]},\quad\Big(0.5\theta(v_{GS}-V_T) < 1\Big)
+$$
 
 速度饱和也可以等效为源极串联退化电阻 $R_{SX}$：
 
-$$R_{SX} = \frac{1}{K' \cdot W \cdot E_c}$$
+$$
+R_{SX} = \frac{1}{K' \cdot W \cdot E_c}
+$$
 
 其中 $E_c$ 为临界电场。物理含义：$\theta \neq 0$ 使跨导特性由平方律向线性过渡。
 
@@ -82,7 +96,9 @@ $$R_{SX} = \frac{1}{K' \cdot W \cdot E_c}$$
 
 **$g_m$ 的多种等效表达：**
 
-$$g_m = \sqrt{2\beta I_D} = \frac{2I_D}{V_{GS}-V_T} = \beta(V_{GS}-V_T)$$
+$$
+g_m = \sqrt{2\beta I_D} = \frac{2I_D}{V_{GS}-V_T} = \beta(V_{GS}-V_T)
+$$
 
 ### 小信号参数典型值（$I_D = 50\,\mu\mathrm{A}$，$W/L = 1\,\mu\mathrm{m}/1\,\mu\mathrm{m}$）
 
@@ -119,11 +135,15 @@ $$g_m = \sqrt{2\beta I_D} = \frac{2I_D}{V_{GS}-V_T} = \beta(V_{GS}-V_T)$$
 
 #### 结耗尽电容（分段模型）
 
-$$C_{BX} = \begin{cases} \dfrac{C_{BX0}}{\left(1 + \dfrac{v_{BX}}{PB}\right)^{MJ}}, & v_{BX} < FC \cdot PB \\ \dfrac{C_{BX0}}{(1-FC)^{1+MJ}}\left(1 - FC(1+MJ) + MJ\dfrac{v_{BX}}{PB}\right), & v_{BX} \ge FC \cdot PB \end{cases}$$
+$$
+C_{BX} = \begin{cases} \dfrac{C_{BX0}}{\left(1 + \dfrac{v_{BX}}{PB}\right)^{MJ}}, & v_{BX} < FC \cdot PB \\ \dfrac{C_{BX0}}{(1-FC)^{1+MJ}}\left(1 - FC(1+MJ) + MJ\dfrac{v_{BX}}{PB}\right), & v_{BX} \ge FC \cdot PB \end{cases}
+$$
 
 其中 $X = S$ 或 $D$。实际建模中分为底面 (bottom) 和侧壁 (sidewall) 两部分：
 
-$$C_{BX} = \frac{CJ \cdot AX}{(1 + v_{BX}/PB)^{MJ}} + \frac{CJSW \cdot PX}{(1 + v_{BX}/PB)^{MJSW}}$$
+$$
+C_{BX} = \frac{CJ \cdot AX}{(1 + v_{BX}/PB)^{MJ}} + \frac{CJSW \cdot PX}{(1 + v_{BX}/PB)^{MJSW}}
+$$
 
 #### 栅极电荷存储电容（与工作区有关）
 
@@ -141,11 +161,15 @@ $$C_{BX} = \frac{CJ \cdot AX}{(1 + v_{BX}/PB)^{MJ}} + \frac{CJSW \cdot PX}{(1 + 
 
 漏电流噪声由**热噪声**和**闪烁噪声（$1/f$ 噪声）**组成：
 
-$$\overline{i_{nD}^2} = \left[\frac{8kT g_m(1+\eta)}{3} + \frac{KF \cdot I_D^{AF}}{C_{ox}L_{eff}^2 \cdot f}\right]\Delta f$$
+$$
+\overline{i_{nD}^2} = \left[\frac{8kT g_m(1+\eta)}{3} + \frac{KF \cdot I_D^{AF}}{C_{ox}L_{eff}^2 \cdot f}\right]\Delta f
+$$
 
 将其折算为等效输入电压噪声（源极交流接地）：
 
-$$\overline{e_{n}^2} = \frac{\overline{i_{nD}^2}}{g_m^2} \approx \frac{B}{WLf} \quad(\text{低频时 } 1/f \text{ 噪声主导})$$
+$$
+\overline{e_{n}^2} = \frac{\overline{i_{nD}^2}}{g_m^2} \approx \frac{B}{WLf} \quad(\text{低频时 } 1/f \text{ 噪声主导})
+$$
 
 - KF 典型值 $\sim 10^{-28}$ F-A
 - 实测表明：$1/f$ 噪声在 100 kHz 以下为主导（取决于偏置条件）
@@ -157,7 +181,9 @@ $$\overline{e_{n}^2} = \frac{\overline{i_{nD}^2}}{g_m^2} \approx \frac{B}{WLf} \
 - **阈值电压温度系数**：$V_T(T) = V_T(T_0) + \alpha(T-T_0)$，其中 $\alpha$ 对 NMOS 为负，PMOS 为正
 - **零温度系数点 (ZTC)**：存在一个 $V_{GS}$ 使 $\partial I_D/\partial T = 0$
 
-$$V_{GS}(\mathrm{ZTC}) = V_T(T_0) + \frac{\alpha}{1.5/T_0}$$
+$$
+V_{GS}(\mathrm{ZTC}) = V_T(T_0) + \frac{\alpha}{1.5/T_0}
+$$
 
 > 当 $V_{GS} > V_{GS}(\mathrm{ZTC})$ 时，$I_D$ 随温度升高而降低——MOSFET 比 BJT 具有更好的热稳定性。
 
@@ -192,12 +218,16 @@ $$V_{GS}(\mathrm{ZTC}) = V_T(T_0) + \frac{\alpha}{1.5/T_0}$$
 当 $v_{GS} < V_T$ 时，MOS 管并非完全截止，而是进入弱反型区，电流呈**指数关系**：
 
 **SPICE LEVEL 3 模型：**
-$$i_D = i_{DS} \cdot \exp\left(\frac{v_{GS} - V_{ON}}{n kT/q}\right),\quad v_{GS} \le V_{ON}$$
+$$
+i_D = i_{DS} \cdot \exp\left(\frac{v_{GS} - V_{ON}}{n kT/q}\right),\quad v_{GS} \le V_{ON}
+$$
 
 其中 $V_{ON} = V_T + n kT/q$。
 
 **手算简化模型：**
-$$i_D = I_{D0}\frac{W}{L}\exp\left(\frac{v_{GS}}{n kT/q}\right)$$
+$$
+i_D = I_{D0}\frac{W}{L}\exp\left(\frac{v_{GS}}{n kT/q}\right)
+$$
 
 - $n$ 为亚阈值斜率因子，通常 $1 < n < 3$
 - 弱反型跨导 $g_m = I_D/(n kT/q)$，跨导效率高于强反型

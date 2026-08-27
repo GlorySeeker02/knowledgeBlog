@@ -42,7 +42,9 @@ CMOS 运放的优势在于：_Rid_ 极高（~10¹⁴ Ω）、_I_OS 和 _I_B 近�
 
 运放开环传递函数的一般形式：
 
-$$A_v(s) = \frac{A_v(0)}{\left(1 - \frac{s}{p_1}\right)\left(1 - \frac{s}{p_2}\right)\cdots}$$
+$$
+A_v(s) = \frac{A_v(0)}{\left(1 - \frac{s}{p_1}\right)\left(1 - \frac{s}{p_2}\right)\cdots}
+$$
 
 关键频域指标：
 - **_GB_**（Unity-Gain Bandwidth）：单位增益带宽，即开环增益下降到 0 dB 时的频率。
@@ -71,11 +73,17 @@ $$A_v(s) = \frac{A_v(0)}{\left(1 - \frac{s}{p_1}\right)\left(1 - \frac{s}{p_2}\r
 
 加入 Miller 电容 _Cc_ 后（Fig. 6.2-6）：
 
-$$p_1 \approx \frac{-1}{g_{mII}R_{II}R_I C_c} \quad \text{(Miller 极点)}$$
+$$
+p_1 \approx \frac{-1}{g_{mII}R_{II}R_I C_c} \quad \text{(Miller 极点)}
+$$
 
-$$p_2 \approx \frac{-g_{mII}}{C_{II}} \quad \text{(输出极点)}$$
+$$
+p_2 \approx \frac{-g_{mII}}{C_{II}} \quad \text{(输出极点)}
+$$
 
-$$z_1 = \frac{g_{mII}}{C_c} \quad \text{(RHP 零点)}$$
+$$
+z_1 = \frac{g_{mII}}{C_c} \quad \text{(RHP 零点)}
+$$
 
 **RHP 零点**是 CMOS 运放的关键问题。它来自 _Cc_ 的信号前馈路径与 M6 的放大路径在高频处等幅反相抵消。该零点同时**增大增益幅度**和**增加相位滞后**，严重恶化稳定性。BJT 运放中因跨导大，此零点位置很高影响较小；CMOS 中跨导较小，必须处理。
 
@@ -83,11 +91,17 @@ $$z_1 = \frac{g_{mII}}{C_c} \quad \text{(RHP 零点)}$$
 
 假设 RHP 零点 _z₁_ >= 10 _GB_：
 
-$$|p_2| \geq 2.2 \cdot GB$$
+$$
+|p_2| \geq 2.2 \cdot GB
+$$
 
-$$\frac{g_{mII}}{C_c} > 10 \cdot GB$$
+$$
+\frac{g_{mII}}{C_c} > 10 \cdot GB
+$$
 
-$$\Rightarrow C_c \geq 0.22 \cdot C_L$$
+$$
+\Rightarrow C_c \geq 0.22 \cdot C_L
+$$
 
 ### RHP 零点的三种处理方法
 
@@ -103,7 +117,9 @@ $$\Rightarrow C_c \geq 0.22 \cdot C_L$$
 
 由于电流镜负载 M3 的 _C_gs3_ 和 _C_gd3_，输入级存在额外的镜像极点 _p₃_ 及其关联零点 _z₃_ = -2_p₃_：
 
-$$p_3 \approx \frac{-g_{m3}}{C_{gs3}+C_{gd3}}$$
+$$
+p_3 \approx \frac{-g_{m3}}{C_{gs3}+C_{gd3}}
+$$
 
 一般而言，若 _p₃_ > 10 _GB_，其对稳定性影响可忽略——相关零点会部分抵消极点的影响。
 
@@ -113,7 +129,9 @@ $$p_3 \approx \frac{-g_{m3}}{C_{gs3}+C_{gd3}}$$
 
 - **PSRR⁺**（正电源）：较差。原因是 M6 的栅-源电压必须保持恒定，_V_DD 的纹波通过 M6 栅极经 _Cc_ 耦合到输出。直流值约 68.8 dB（例 6.3-1），在高频处以 -20 dB/dec 滚降。
 
-$$PSRR^+ \approx \frac{G_{II}A_v(0)}{g_{ds6}} \cdot \frac{\left(1 + \frac{s}{GB}\right)\left(1 + \frac{s}{|p_2|}\right)}{\left(1 + \frac{s}{GB/A_v(0)}\right)\left(1 + \frac{s}{|p_2|}\right)}$$
+$$
+PSRR^+ \approx \frac{G_{II}A_v(0)}{g_{ds6}} \cdot \frac{\left(1 + \frac{s}{GB}\right)\left(1 + \frac{s}{|p_2|}\right)}{\left(1 + \frac{s}{GB/A_v(0)}\right)\left(1 + \frac{s}{|p_2|}\right)}
+$$
 
 - **PSRR⁻**（负电源）：强烈依赖于 _V_BIAS 的接法。若 _V_BIAS 独立于 _V_SS（由与电源无关的电流源产生），PSRR⁻ 远优于 PSRR⁺。
 
@@ -125,7 +143,9 @@ $$PSRR^+ \approx \frac{G_{II}A_v(0)}{g_{ds6}} \cdot \frac{\left(1 + \frac{s}{GB}
 
 **结构**：n-channel 输入差分对 + p-channel 电流镜负载（第一级）+ p-channel 共源放大器 + n-channel 电流沉负载（第二级）+ Miller 补偿电容 _Cc_。
 
-$$V_{in} \xrightarrow{V\to I} \text{[差分对]} \xrightarrow{I\to V} \text{[电流镜]} \xrightarrow{V\to I} \text{[共源级 M6]} \xrightarrow{I\to V} \text{[电流沉 M7]} = V_{out}$$
+$$
+V_{in} \xrightarrow{V\to I} \text{[差分对]} \xrightarrow{I\to V} \text{[电流镜]} \xrightarrow{V\to I} \text{[共源级 M6]} \xrightarrow{I\to V} \text{[电流沉 M7]} = V_{out}
+$$
 
 **特点**：
 - 结构简单、鲁棒、广泛使用
@@ -145,7 +165,9 @@ $$V_{in} \xrightarrow{V\to I} \text{[差分对]} \xrightarrow{I\to V} \text{[电
 - **PSRR 极好**：没有 Miller 电容从电源到输出的前馈路径
 - **增益**与两级运放相当：~ _g_m _r_ds_² 量级，具体为
 
-$$A_v \approx \left(\frac{2+k}{2(1+k)}\right) g_{m1} R_{out}$$
+$$
+A_v \approx \left(\frac{2+k}{2(1+k)}\right) g_{m1} R_{out}
+$$
 
 其中 _k_ 为电流分配不平衡因子，_R_out_ ≈ cascode 输出阻抗。
 
@@ -161,7 +183,9 @@ $$A_v \approx \left(\frac{2+k}{2(1+k)}\right) g_{m1} R_{out}$$
 
 在 cascode 管栅极加入反相放大增益级 _-A_，将输出阻抗提升 _A_ 倍：
 
-$$R_{out} \approx A \cdot g_m r_{ds}^2$$
+$$
+R_{out} \approx A \cdot g_m r_{ds}^2
+$$
 
 增益可达 (_g_m _r_ds_)³ 量级。增强放大器本身通常采用简单的反相器结构（Fig. 6.5-15），注意增强放大器的主极点必须远高于运放的主极点。
 

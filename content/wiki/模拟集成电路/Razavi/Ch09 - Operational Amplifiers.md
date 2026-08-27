@@ -39,7 +39,9 @@ date: 2026-08-02
 
 最简单的运放就是差分对 + 电流源负载（图9.6）：
 
-$$A_v = g_{mN}(r_{ON} \parallel r_{OP})$$
+$$
+A_v = g_{mN}(r_{ON} \parallel r_{OP})
+$$
 
 纳米级工艺下这不超过10倍。单端输出版本含有镜像极点（Ch6），限制了反馈系统稳定性（Ch10）。
 
@@ -47,7 +49,9 @@ $$A_v = g_{mN}(r_{ON} \parallel r_{OP})$$
 
 在差分对上堆叠共源共栅管（图9.8）：
 
-$$A_v \approx g_{m1}\left[(g_{m3}r_{O3}r_{O1}) \parallel (g_{m5}r_{O5}r_{O7})\right]$$
+$$
+A_v \approx g_{m1}\left[(g_{m3}r_{O3}r_{O1}) \parallel (g_{m5}r_{O5}r_{O7})\right]
+$$
 
 **优点**：增益高、功耗低、速度最高。
 
@@ -60,7 +64,9 @@ $$A_v \approx g_{m1}\left[(g_{m3}r_{O3}r_{O1}) \parallel (g_{m5}r_{O5}r_{O7})\ri
 
 将输入管类型翻转，解决 telescopic 的摆幅和输入共模问题（图9.15）：
 
-$$A_v \approx g_{m1}\left\{[(g_{m7}+g_{mb7})r_{O7}r_{O9}] \parallel [(g_{m3}+g_{mb3})r_{O3}(r_{O1}\parallel r_{O5})]\right\}$$
+$$
+A_v \approx g_{m1}\left\{[(g_{m7}+g_{mb7})r_{O7}r_{O9}] \parallel [(g_{m3}+g_{mb3})r_{O3}(r_{O1}\parallel r_{O5})]\right\}
+$$
 
 | | Telescopic | Folded-Cascode |
 |---|---|---|
@@ -92,7 +98,9 @@ $$A_v \approx g_{m1}\left\{[(g_{m7}+g_{mb7})r_{O7}r_{O9}] \parallel [(g_{m3}+g_{
 - **第一级**：提供高增益（可含 cascode 进一步提高，图9.24）
 - **第二级**：简单共源级，提供最大输出摆幅（$V_{DD} - |V_{OD5,6}| - V_{OD7,8}$）
 
-$$A_v = g_{m1,2}(r_{O1,2}\parallel r_{O3,4}) \times g_{m5,6}(r_{O5,6}\parallel r_{O7,8})$$
+$$
+A_v = g_{m1,2}(r_{O1,2}\parallel r_{O3,4}) \times g_{m5,6}(r_{O5,6}\parallel r_{O7,8})
+$$
 
 > [!warning] 级数限制
 > 多于两级极少使用，因为每级至少引入一个极点，使反馈系统稳定性难以保证（Ch10）。
@@ -107,7 +115,9 @@ $$A_v = g_{m1,2}(r_{O1,2}\parallel r_{O3,4}) \times g_{m5,6}(r_{O5,6}\parallel r
 1. $A_1$ 将 cascode 管的等效 $g_m$ 增大为 $(A_1+1)g_m$
 2. $A_1$ 监测并钳制 cascode 管源极电压，使漏极电流不随漏极电压变化
 
-$$R_{out} \approx (A_1+1)g_{m2}r_{O2}r_{O1} + r_{O1} + r_{O2}$$
+$$
+R_{out} \approx (A_1+1)g_{m2}r_{O2}r_{O1} + r_{O1} + r_{O2}
+$$
 
 增益 = $g_{m1} \times R_{out}$，等效于"四重 cascode"。
 
@@ -192,7 +202,9 @@ CMFB 的三要素：**感知**输出共模电平 $\to$ **比较**参考电压 $\
 
 当输入阶跃足够大，差分对一侧完全截止，尾电流全部用于对负载电容充放电，输出呈恒定斜率斜线：
 
-$$\text{SR} = \frac{I_{SS}}{C_L}$$
+$$
+\text{SR} = \frac{I_{SS}}{C_L}
+$$
 
 > [!important] Slew Rate 是**非线性**现象
 > 线性系统：斜率正比于输入幅度 → 双倍输入则每点输出翻倍
@@ -220,7 +232,9 @@ $$\text{SR} = \frac{I_{SS}}{C_L}$$
 ## 9.11 电源抑制 (PSRR)
 
 低频率下：
-$$\text{PSRR} = \frac{A_{v,\text{diff}}}{A_{v,\text{sup}}} \approx g_{mN}(r_{OP}\parallel r_{ON})$$
+$$
+\text{PSRR} = \frac{A_{v,\text{diff}}}{A_{v,\text{sup}}} \approx g_{mN}(r_{OP}\parallel r_{ON})
+$$
 
 - 简单差分对的 $\partial V_{out}/\partial V_{DD} \approx 1$（二极管连接钳制了 $V_X$）
 - 闭环反馈以相同因子降低 $\partial V_{out}/\partial V_{DD}$ 和 $\partial V_{out}/\partial V_{in}$，因此 PSRR 基本不变
@@ -229,17 +243,23 @@ $$\text{PSRR} = \frac{A_{v,\text{diff}}}{A_{v,\text{sup}}} \approx g_{mN}(r_{OP}
 
 **Telescopic** 输入参考热噪声（忽略 cascode 管）：
 
-$$\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1,2}} + \frac{2g_{m7,8}}{3g_{m1,2}^2}\right)$$
+$$
+\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1,2}} + \frac{2g_{m7,8}}{3g_{m1,2}^2}\right)
+$$
 
 **Folded-Cascode** 输入参考热噪声（含两组负载电流源 $M_{7,8}$ 和 $M_{9,10}$）：
 
-$$\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1,2}} + \frac{2g_{m7,8}}{3g_{m1,2}^2} + \frac{2g_{m9,10}}{3g_{m1,2}^2}\right)$$
+$$
+\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1,2}} + \frac{2g_{m7,8}}{3g_{m1,2}^2} + \frac{2g_{m9,10}}{3g_{m1,2}^2}\right)
+$$
 
 > Folded-cascode 的噪声比 telescopic 大（多了 $M_{9,10}$ 的贡献）。
 
 **两级运放**：第二级噪声除以第一级增益后通常可忽略：
 
-$$\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1}} + \frac{2g_{m3}}{3g_{m1}^2}\right) + \frac{8kT\left(\frac{2}{3g_{m5}} + \frac{2g_{m7}}{3g_{m5}^2}\right)}{[g_{m1}(r_{O1}\parallel r_{O3})]^2}$$
+$$
+\overline{V_n^2}_{,\text{in}} \approx 8kT\left(\frac{2}{3g_{m1}} + \frac{2g_{m3}}{3g_{m1}^2}\right) + \frac{8kT\left(\frac{2}{3g_{m5}} + \frac{2g_{m7}}{3g_{m5}^2}\right)}{[g_{m1}(r_{O1}\parallel r_{O3})]^2}
+$$
 
 **闪烁噪声**敏感的场合优先选用 PMOS 输入对（PMOS 通常具有更低的 $1/f$ 噪声系数）。
 
