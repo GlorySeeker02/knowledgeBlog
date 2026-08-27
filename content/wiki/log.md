@@ -195,3 +195,14 @@
 - Updated: [[wiki/论文/论文数据库]] — 新增「工作速率 Gbps」「Tx 架构（SST/CML 等按原文）」「Rx 架构」三栏，11 篇全部补全（未详述项标「—（未详述）」）
 - Updated: CLAUDE.md 触发 4 — 数据库行字段规范同步（共 16 字段）
 - Updated: [[wiki/论文/论文库说明与模板]]、wiki/index.md — 字段说明同步
+
+## [2026-08-22] setup | 流程优化批处理（体检 P1+P2）
+- publish.ps1：无改动自动跳过（省 CI 构建）；新增 `-local` 本地构建校验；远端未配置时友好提示；输出博客地址
+- blog: 开启 recent-notes（右侧栏「最近更新」）；analytics 置 null（无 Plausible 账号，避免加载无用脚本）
+- CLAUDE.md 触发 3 lint：新增论文数据库 ↔ wiki/论文/ 一致性检查
+- .gitattributes：统一行尾（md/yaml→LF，ps1→CRLF），消除 CRLF 警告
+- 安全：移除 vault 仓库误配的公开 remote（防止 raw/Clippings 意外推送到公开博客仓库）
+
+## [2026-08-22] setup | 博客改 Hexo 风格简洁布局
+- blog: 关闭 graph（关系图谱）、backlinks（反向链接）、explorer（左侧目录树）；recent-notes 移至左侧栏（8 条）；保留 TOC/搜索/深色模式/阅读模式/面包屑
+- 主题维持 minimal（极简浅色），构建验证通过
