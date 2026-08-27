@@ -130,10 +130,10 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: false
+    enabled: true
     layout:
       position: left
-      priority: 50
+      priority: 20
   - source: "@quartz-community/graph"
     enabled: false
     layout:
@@ -215,7 +215,7 @@ plugins:
       linkToMore: false
     layout:
       position: left
-      priority: 15
+      priority: 60
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}
