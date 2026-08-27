@@ -185,3 +185,8 @@
 - Updated: CLAUDE.md 触发 4 — 收论文时自动追加数据库行
 - Updated: [[wiki/论文/论文库说明与模板]] — 增加数据库说明
 - Updated: wiki/index.md — 论文分组新增条目
+
+## [2026-08-22] setup | 论文数据库增加架构/功耗/面积三栏
+- Updated: [[wiki/论文/论文数据库]] — 新增「架构（Tx+Rx/Tx only/Rx only）」「功耗 pJ/b」「面积」三栏，11 篇全部补全（8.1/8.6/8.8 有面积数据，其余标「—」）
+- Updated: CLAUDE.md 触发 4 — 数据库行字段规范同步
+- Updated: [[wiki/论文/论文库说明与模板]]、wiki/index.md — 字段说明同步

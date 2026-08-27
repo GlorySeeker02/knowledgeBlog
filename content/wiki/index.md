@@ -114,6 +114,6 @@
 ## 论文
 
 - [[wiki/论文/论文库说明与模板]] — 论文文献管理规范：存放路径、frontmatter 字段（作者/年份/题目/摘要/关键字）、笔记模板与示例。*Updated: 2026-08-22*
-- [[wiki/论文/论文数据库]] — 已收录论文的一站式数据库（作者/隶属机构/年份/会议/工艺/摘要/关键字，收论文自动更新）。*Updated: 2026-08-22*
+- [[wiki/论文/论文数据库]] — 已收录论文的一站式数据库（作者/隶属机构/年份/会议/工艺/架构/功耗/面积/摘要/关键字，收论文自动更新）。*Updated: 2026-08-22*
 - [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]] — [Paper] ISSCC 2026 Session 8 综述：11 篇 Die-to-Die/高速收发机论文（UCIe 链路、SBD 双向收发机、PAM-4 CDR、低功耗 TX）。*Updated: 2026-08-22*
 - [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]] — [Paper] Broadcom 280mW 112Gb/s 低功耗收发机（8.6）深度分析：模拟接收机 vs ADC/DSP、CTLE 顶替 DFE H1/H2、单 PI 时钟、测量与权衡。*Updated: 2026-08-22*
