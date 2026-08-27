@@ -179,3 +179,9 @@
 - Created: [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]]（8.6 深度分析归档，含关键框图）
 - Updated: [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]] — 8.6 表格行链接到分析笔记 + See Also
 - Updated: wiki/index.md — 论文分组新增条目
+
+## [2026-08-22] setup | 新增论文数据库
+- Created: [[wiki/论文/论文数据库]]（Session 8 已收录 11 篇，字段：作者/隶属机构/年份/会议/工艺/摘要/关键字/笔记链接）
+- Updated: CLAUDE.md 触发 4 — 收论文时自动追加数据库行
+- Updated: [[wiki/论文/论文库说明与模板]] — 增加数据库说明
+- Updated: wiki/index.md — 论文分组新增条目
