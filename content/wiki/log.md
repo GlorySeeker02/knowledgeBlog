@@ -213,3 +213,10 @@
 ## [2026-08-22] setup | 主题配色改为 Pkmer 风
 - blog: 提取 pkmer.cn/theme.css 色板（主色紫 hsl(269,79%,54%)、点缀橙 hsl(22,100%,60%)、浅紫灰底 #eee7f4、深色靛紫底 #211b2d），写入 quartz.config.yaml theme.colors（明暗双模式）
 - 停用 @quartz-themes/minimal 插件，改用自定义配色（构建验证：--secondary:#872de6、--tertiary:#ff7e33 等已生效）
+
+## [2026-08-22] setup | 主题改为 NexT Gemini 风（复刻 raytroop.github.io）
+- 读取 raytroop/raytroop.github.io 仓库的 `_config.next.yml`（scheme: Gemini）+ 线上 main.css 提取色板
+- 配色：页面灰底 #f5f5f5 + 白卡片、正文 #555、标题 #222、品牌橙 #fc6423、深色模式 #1e1e1e 系
+- 布局：TOC 移至左侧边栏（Gemini 方案结构：侧栏=标题+目录树+TOC+最近更新，右侧留空）
+- 字体 Lato（中文回退苹方/雅黑）；代码高亮 one-light / one-dark-pro
+- 构建验证通过
