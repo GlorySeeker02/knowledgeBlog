@@ -3,7 +3,7 @@ title: 首页
 description: 个人知识库 · 信号处理 · 模拟集成电路 · 随机过程 · 论文库
 ---
 
-![[wiki/模拟集成电路/Razavi/Ch16 - Phase-Locked Loops]]
+![[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-3nm]]
 
 ---
 
