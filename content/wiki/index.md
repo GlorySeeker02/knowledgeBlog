@@ -118,3 +118,4 @@
 - [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]] — [Paper] ISSCC 2026 Session 8 综述：11 篇 Die-to-Die/高速收发机论文（UCIe 链路、SBD 双向收发机、PAM-4 CDR、低功耗 TX）。*Updated: 2026-08-22*
 - [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]] — [Paper] Broadcom 280mW 112Gb/s 低功耗收发机（8.6）深度分析：模拟接收机 vs ADC/DSP、CTLE 顶替 DFE H1/H2、单 PI 时钟、测量与权衡。*Updated: 2026-08-22*
 - [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-3nm]] — [Paper] Synopsys 224Gb/s PAM-4 长距收发机（JSSC 2025）：40dB 损耗 BER<1e-6、3pJ/b、1/8 率时钟、MLSD，首款完整 3nm 224G。*Updated: 2026-08-22*
+- [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-DeepDive]] — [Paper] Synopsys 224G 收发机深度分析：1/8 率时钟赌注、逆变器 AFE 失真消隐、8+10 TI-ADC、首创 8:1 MUX、MLSD 权衡。*Updated: 2026-08-22*

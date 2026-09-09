@@ -58,6 +58,7 @@ TX: 64符号并行 FFE → 串化 → 7bit 电流模 DAC (1/8率, 8相) → 驱�
 
 ## 相关
 
+- [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-DeepDive]] — 深度分析（1/8 率时钟/逆变器 AFE/8:1 MUX/MLSD 权衡）
 - [[wiki/论文/高速接口/ISSCC2026-Session8-D2D-Transceivers]] — ISSCC 2026 Session 8（同领域综述）
 - [[wiki/论文/高速接口/Broadcom2026-280mW-112G-Transceiver-Analysis]] — 112G 模拟 RX 方案对比
 - Source: `raw/论文/高速接口/A 224 Gb-s 3 pJ-bit 40 dB Insertion Loss Transceiver in 3-nm FinFET CMOS/`（原文 md + 插图）

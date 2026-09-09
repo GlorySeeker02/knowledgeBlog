@@ -246,3 +246,8 @@
 - Created: [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-3nm]]（首款完整 3nm 224G 收发机：1/8 率时钟/MLSD/TI-ADC/测量/与 8.6 路线对比）
 - Updated: [[wiki/论文/论文数据库]] — 追加第 12 篇（JSSC 2025 单篇收录）
 - Updated: wiki/index.md — 论文分组新增条目
+
+## [2026-08-22] query | Archived: Synopsys 224G 收发机深度分析
+- Created: [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-DeepDive]]（1/8 率时钟/逆变器 AFE/双 T-coil/串联峰值 CTLE/8+10 TI-ADC/MLSD/8:1 MUX 全链路深度分析 + 批判性评价）
+- Updated: [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-3nm]] — 相关区加深度分析链接
+- Updated: wiki/index.md — 论文分组新增条目
