@@ -239,3 +239,10 @@
 
 ## [2026-08-22] setup | 字体改黑色系（去橙色）
 - blog: 链接色 #fc6423（橙）→ 纯黑 #222，悬停 #444；标记高亮改米黄 #fff2a8；深色模式链接改浅灰 #ccc
+
+## [2026-08-22] paper | A 224 Gb/s 3 pJ/bit 40 dB Insertion Loss Transceiver in 3-nm FinFET CMOS
+- Source: `D:\user\liuliu\file_convert\output\JSSC\2025\A 224 Gb-s 3 pJ-bit 40 dB Insertion Loss Transceiver in 3-nm FinFET CMOS\`（转换 md + 插图）
+- Raw: [[raw/论文/高速接口/A 224 Gb-s 3 pJ-bit 40 dB Insertion Loss Transceiver in 3-nm FinFET CMOS/]]（32 文件，9.2 MB）
+- Created: [[wiki/论文/高速接口/Pfaff2025-224G-Transceiver-3nm]]（首款完整 3nm 224G 收发机：1/8 率时钟/MLSD/TI-ADC/测量/与 8.6 路线对比）
+- Updated: [[wiki/论文/论文数据库]] — 追加第 12 篇（JSSC 2025 单篇收录）
+- Updated: wiki/index.md — 论文分组新增条目
